@@ -1,0 +1,32 @@
+{
+    "files.associations": {
+        "postgres.h": "c",
+        "c.h": "c",
+        "sqlstruct.h": "c",
+        "parsenodes.h": "c",
+        "indexrec.h": "c",
+        "tcopprot.h": "c",
+        "primnodes.h": "c",
+        "pg_list.h": "c",
+        "nodes.h": "c",
+        "bitmapset.h": "c",
+        "lockoptions.h": "c",
+        "value.h": "c",
+        "partdefs.h": "c",
+        "attnum.h": "c",
+        "fd.h": "c",
+        "namespace.h": "c",
+        "toasting.h": "c",
+        "pg_inherits.h": "c",
+        "catalog.h": "c",
+        "index.h": "c",
+        "alter.h": "c",
+        "relcache.h": "c",
+        "objectaddress.h": "c",
+        "xlog.h": "c",
+        "lsyscache.h": "c",
+        "table.h": "c",
+        "tablecmds.h": "c",
+        "rel.h": "c"
+    }
+}

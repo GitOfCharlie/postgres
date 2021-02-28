@@ -1,0 +1,1696 @@
+2021-01-20 02:52:05.016 PST [12910] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-01-20 02:52:05.016 PST [12910] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-20 02:52:05.018 PST [12910] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-20 02:52:05.020 PST [12912] LOG:  database system was shut down at 2021-01-20 02:51:50 PST
+2021-01-20 02:52:05.022 PST [12910] LOG:  database system is ready to accept connections
+2021-02-20 05:37:22.196 PST [106791] FATAL:  lock file "postmaster.pid" already exists
+2021-02-20 05:37:22.196 PST [106791] HINT:  Is another postmaster (PID 12910) running in data directory "/home/pguser/Desktop/postgres/data"?
+2021-02-20 05:38:32.712 PST [106799] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 05:38:32.714 PST [106799] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 05:38:32.717 PST [106799] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 05:38:32.731 PST [106800] LOG:  database system was shut down at 2021-02-20 05:38:28 PST
+2021-02-20 05:38:32.746 PST [106799] LOG:  database system is ready to accept connections
+2021-02-20 06:05:05.337 PST [106799] LOG:  received fast shutdown request
+2021-02-20 06:05:05.340 PST [106799] LOG:  aborting any active transactions
+2021-02-20 06:05:05.342 PST [106799] LOG:  background worker "logical replication launcher" (PID 106806) exited with exit code 1
+2021-02-20 06:05:05.343 PST [106801] LOG:  shutting down
+2021-02-20 06:05:05.358 PST [106799] LOG:  database system is shut down
+2021-02-20 06:05:10.919 PST [107774] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 06:05:10.921 PST [107774] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 06:05:10.924 PST [107774] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 06:05:10.931 PST [107775] LOG:  database system was shut down at 2021-02-20 06:05:05 PST
+2021-02-20 06:05:10.936 PST [107774] LOG:  database system is ready to accept connections
+2021-02-20 06:05:39.395 PST [107783] ERROR:  relation "testtable" does not exist at character 15
+2021-02-20 06:05:39.395 PST [107783] STATEMENT:  select * from testtable where pid > 10 and qid < 30;
+2021-02-20 06:26:13.585 PST [107774] LOG:  received fast shutdown request
+2021-02-20 06:26:13.588 PST [107774] LOG:  aborting any active transactions
+2021-02-20 06:26:13.589 PST [107774] LOG:  background worker "logical replication launcher" (PID 107781) exited with exit code 1
+2021-02-20 06:26:20.151 PST [108662] FATAL:  terminating connection due to administrator command
+2021-02-20 06:26:20.152 PST [108662] LOG:  could not send data to client: Broken pipe
+2021-02-20 06:26:20.155 PST [107776] LOG:  shutting down
+2021-02-20 06:26:20.168 PST [107774] LOG:  database system is shut down
+2021-02-20 06:26:26.962 PST [108674] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 06:26:26.963 PST [108674] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 06:26:26.966 PST [108674] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 06:26:26.973 PST [108675] LOG:  database system was shut down at 2021-02-20 06:26:20 PST
+2021-02-20 06:26:26.978 PST [108674] LOG:  database system is ready to accept connections
+2021-02-20 06:27:22.045 PST [108674] LOG:  server process (PID 108683) was terminated by signal 11: Segmentation fault
+2021-02-20 06:27:22.045 PST [108674] DETAIL:  Failed process was running: select sum(pid), avg(qid) from testtable where pid > 10 and qid < 30 and exists
+	(select * from testtable where id = 10)
+	and pid < any(select pid from testtable where qid >100)
+	;
+2021-02-20 06:27:22.050 PST [108674] LOG:  terminating any other active server processes
+2021-02-20 06:27:22.058 PST [108674] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:27:22.102 PST [108729] LOG:  database system was interrupted; last known up at 2021-02-20 06:26:26 PST
+2021-02-20 06:27:22.176 PST [108729] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:27:22.181 PST [108729] LOG:  redo starts at 0/162A0C8
+2021-02-20 06:27:22.181 PST [108729] LOG:  invalid record length at 0/162A100: wanted 24, got 0
+2021-02-20 06:27:22.182 PST [108729] LOG:  redo done at 0/162A0C8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-20 06:27:22.196 PST [108674] LOG:  database system is ready to accept connections
+2021-02-20 06:27:47.167 PST [108674] LOG:  server process (PID 108738) was terminated by signal 11: Segmentation fault
+2021-02-20 06:27:47.167 PST [108674] DETAIL:  Failed process was running: select sum(pid), avg(qid) from testtable where pid > 10 and qid < 30 and exists
+	(select * from testtable where id = 10)
+	and pid < any(select pid from testtable where qid >100)
+	;
+2021-02-20 06:27:47.168 PST [108674] LOG:  terminating any other active server processes
+2021-02-20 06:27:47.170 PST [108740] FATAL:  the database system is in recovery mode
+2021-02-20 06:27:47.172 PST [108674] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:27:47.193 PST [108741] LOG:  database system was interrupted; last known up at 2021-02-20 06:27:22 PST
+2021-02-20 06:27:47.214 PST [108741] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:27:47.218 PST [108741] LOG:  redo starts at 0/162A178
+2021-02-20 06:27:47.218 PST [108741] LOG:  invalid record length at 0/162A1B0: wanted 24, got 0
+2021-02-20 06:27:47.219 PST [108741] LOG:  redo done at 0/162A178 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-20 06:27:47.236 PST [108674] LOG:  database system is ready to accept connections
+2021-02-20 06:27:57.053 PST [108674] LOG:  received fast shutdown request
+2021-02-20 06:27:57.055 PST [108674] LOG:  aborting any active transactions
+2021-02-20 06:27:57.056 PST [108674] LOG:  background worker "logical replication launcher" (PID 108747) exited with exit code 1
+2021-02-20 06:27:57.058 PST [108742] LOG:  shutting down
+2021-02-20 06:27:57.071 PST [108674] LOG:  database system is shut down
+2021-02-20 06:28:00.037 PST [108752] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 06:28:00.038 PST [108752] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 06:28:00.042 PST [108752] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 06:28:00.048 PST [108753] LOG:  database system was shut down at 2021-02-20 06:27:57 PST
+2021-02-20 06:28:00.054 PST [108752] LOG:  database system is ready to accept connections
+2021-02-20 06:28:05.963 PST [108752] LOG:  server process (PID 108761) was terminated by signal 11: Segmentation fault
+2021-02-20 06:28:05.963 PST [108752] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:28:05.963 PST [108752] LOG:  terminating any other active server processes
+2021-02-20 06:28:05.965 PST [108763] FATAL:  the database system is in recovery mode
+2021-02-20 06:28:05.967 PST [108752] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:28:05.989 PST [108764] LOG:  database system was interrupted; last known up at 2021-02-20 06:28:00 PST
+2021-02-20 06:28:06.010 PST [108764] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:28:06.014 PST [108764] LOG:  invalid record length at 0/162A2A0: wanted 24, got 0
+2021-02-20 06:28:06.015 PST [108764] LOG:  redo is not required
+2021-02-20 06:28:06.031 PST [108752] LOG:  database system is ready to accept connections
+2021-02-20 06:29:54.018 PST [108752] LOG:  received fast shutdown request
+2021-02-20 06:29:54.019 PST [108752] LOG:  aborting any active transactions
+2021-02-20 06:29:54.020 PST [108752] LOG:  background worker "logical replication launcher" (PID 108770) exited with exit code 1
+2021-02-20 06:29:54.020 PST [108765] LOG:  shutting down
+2021-02-20 06:29:54.026 PST [108752] LOG:  database system is shut down
+2021-02-20 06:29:56.612 PST [109525] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 06:29:56.613 PST [109525] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 06:29:56.616 PST [109525] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 06:29:56.619 PST [109526] LOG:  database system was shut down at 2021-02-20 06:29:54 PST
+2021-02-20 06:29:56.621 PST [109525] LOG:  database system is ready to accept connections
+2021-02-20 06:30:02.685 PST [109525] LOG:  server process (PID 109534) was terminated by signal 11: Segmentation fault
+2021-02-20 06:30:02.685 PST [109525] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:30:02.685 PST [109525] LOG:  terminating any other active server processes
+2021-02-20 06:30:02.686 PST [109536] FATAL:  the database system is in recovery mode
+2021-02-20 06:30:02.686 PST [109525] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:30:02.693 PST [109537] LOG:  database system was interrupted; last known up at 2021-02-20 06:29:56 PST
+2021-02-20 06:30:02.701 PST [109537] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:30:02.703 PST [109537] LOG:  invalid record length at 0/162A3C8: wanted 24, got 0
+2021-02-20 06:30:02.703 PST [109537] LOG:  redo is not required
+2021-02-20 06:30:02.707 PST [109525] LOG:  database system is ready to accept connections
+2021-02-20 06:30:45.111 PST [109525] LOG:  received fast shutdown request
+2021-02-20 06:30:45.112 PST [109525] LOG:  aborting any active transactions
+2021-02-20 06:30:45.113 PST [109525] LOG:  background worker "logical replication launcher" (PID 109543) exited with exit code 1
+2021-02-20 06:30:45.113 PST [109538] LOG:  shutting down
+2021-02-20 06:30:45.119 PST [109525] LOG:  database system is shut down
+2021-02-20 06:30:49.198 PST [109565] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 06:30:49.199 PST [109565] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 06:30:49.201 PST [109565] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 06:30:49.203 PST [109566] LOG:  database system was shut down at 2021-02-20 06:30:45 PST
+2021-02-20 06:30:49.205 PST [109565] LOG:  database system is ready to accept connections
+2021-02-20 06:30:58.036 PST [109565] LOG:  server process (PID 109579) was terminated by signal 11: Segmentation fault
+2021-02-20 06:30:58.036 PST [109565] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:30:58.036 PST [109565] LOG:  terminating any other active server processes
+2021-02-20 06:30:58.037 PST [109581] FATAL:  the database system is in recovery mode
+2021-02-20 06:30:58.038 PST [109565] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:30:58.044 PST [109582] LOG:  database system was interrupted; last known up at 2021-02-20 06:30:49 PST
+2021-02-20 06:30:58.053 PST [109582] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:30:58.055 PST [109582] LOG:  invalid record length at 0/162A4F0: wanted 24, got 0
+2021-02-20 06:30:58.055 PST [109582] LOG:  redo is not required
+2021-02-20 06:30:58.060 PST [109565] LOG:  database system is ready to accept connections
+2021-02-20 06:33:41.902 PST [109565] LOG:  received fast shutdown request
+2021-02-20 06:33:41.903 PST [109565] LOG:  aborting any active transactions
+2021-02-20 06:33:41.904 PST [109565] LOG:  background worker "logical replication launcher" (PID 109588) exited with exit code 1
+2021-02-20 06:33:41.904 PST [109583] LOG:  shutting down
+2021-02-20 06:33:41.910 PST [109565] LOG:  database system is shut down
+2021-02-20 06:36:13.295 PST [109730] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 06:36:13.295 PST [109730] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 06:36:13.297 PST [109730] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 06:36:13.299 PST [109731] LOG:  database system was shut down at 2021-02-20 06:33:41 PST
+2021-02-20 06:36:13.302 PST [109730] LOG:  database system is ready to accept connections
+2021-02-20 06:36:21.126 PST [109730] LOG:  server process (PID 109741) was terminated by signal 11: Segmentation fault
+2021-02-20 06:36:21.126 PST [109730] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:36:21.126 PST [109730] LOG:  terminating any other active server processes
+2021-02-20 06:36:21.134 PST [109743] FATAL:  the database system is in recovery mode
+2021-02-20 06:36:21.134 PST [109730] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:36:21.141 PST [109744] LOG:  database system was interrupted; last known up at 2021-02-20 06:36:13 PST
+2021-02-20 06:36:21.152 PST [109744] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:36:21.153 PST [109744] LOG:  invalid record length at 0/162A618: wanted 24, got 0
+2021-02-20 06:36:21.153 PST [109744] LOG:  redo is not required
+2021-02-20 06:36:21.159 PST [109730] LOG:  database system is ready to accept connections
+2021-02-20 06:39:22.694 PST [109730] LOG:  received fast shutdown request
+2021-02-20 06:39:22.695 PST [109730] LOG:  aborting any active transactions
+2021-02-20 06:39:22.695 PST [109730] LOG:  background worker "logical replication launcher" (PID 109750) exited with exit code 1
+2021-02-20 06:39:22.696 PST [109745] LOG:  shutting down
+2021-02-20 06:39:22.701 PST [109730] LOG:  database system is shut down
+2021-02-20 06:40:44.863 PST [2379] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 06:40:44.864 PST [2379] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 06:40:44.865 PST [2379] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 06:40:44.869 PST [2382] LOG:  database system was shut down at 2021-02-20 06:39:22 PST
+2021-02-20 06:40:44.874 PST [2379] LOG:  database system is ready to accept connections
+2021-02-20 06:40:50.387 PST [2379] LOG:  server process (PID 2391) was terminated by signal 11: Segmentation fault
+2021-02-20 06:40:50.387 PST [2379] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:40:50.388 PST [2379] LOG:  terminating any other active server processes
+2021-02-20 06:40:50.389 PST [2393] FATAL:  the database system is in recovery mode
+2021-02-20 06:40:50.389 PST [2379] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:40:50.397 PST [2394] LOG:  database system was interrupted; last known up at 2021-02-20 06:40:44 PST
+2021-02-20 06:40:50.414 PST [2394] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:40:50.416 PST [2394] LOG:  invalid record length at 0/162A740: wanted 24, got 0
+2021-02-20 06:40:50.416 PST [2394] LOG:  redo is not required
+2021-02-20 06:40:50.421 PST [2379] LOG:  database system is ready to accept connections
+2021-02-20 06:41:12.454 PST [2379] LOG:  server process (PID 2482) was terminated by signal 11: Segmentation fault
+2021-02-20 06:41:12.454 PST [2379] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:41:12.454 PST [2379] LOG:  terminating any other active server processes
+2021-02-20 06:41:12.455 PST [2379] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:41:12.462 PST [2512] LOG:  database system was interrupted; last known up at 2021-02-20 06:40:50 PST
+2021-02-20 06:41:12.473 PST [2512] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:41:12.474 PST [2512] LOG:  redo starts at 0/162A7B8
+2021-02-20 06:41:12.475 PST [2512] LOG:  invalid record length at 0/162A7F0: wanted 24, got 0
+2021-02-20 06:41:12.475 PST [2512] LOG:  redo done at 0/162A7B8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-20 06:41:12.479 PST [2379] LOG:  database system is ready to accept connections
+2021-02-20 06:45:20.288 PST [2379] LOG:  server process (PID 2553) was terminated by signal 11: Segmentation fault
+2021-02-20 06:45:20.288 PST [2379] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:45:20.288 PST [2379] LOG:  terminating any other active server processes
+2021-02-20 06:45:20.289 PST [2379] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:45:20.296 PST [2570] FATAL:  the database system is in recovery mode
+2021-02-20 06:45:20.296 PST [2569] LOG:  database system was interrupted; last known up at 2021-02-20 06:41:12 PST
+2021-02-20 06:45:20.305 PST [2569] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:45:20.307 PST [2569] LOG:  redo starts at 0/162A868
+2021-02-20 06:45:20.317 PST [2569] LOG:  invalid record length at 0/162A8A0: wanted 24, got 0
+2021-02-20 06:45:20.319 PST [2569] LOG:  redo done at 0/162A868 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.01 s
+2021-02-20 06:45:20.323 PST [2379] LOG:  database system is ready to accept connections
+2021-02-20 06:56:28.941 PST [2379] LOG:  received fast shutdown request
+2021-02-20 06:56:28.942 PST [2379] LOG:  aborting any active transactions
+2021-02-20 06:56:28.943 PST [2379] LOG:  background worker "logical replication launcher" (PID 2576) exited with exit code 1
+2021-02-20 06:56:28.943 PST [2571] LOG:  shutting down
+2021-02-20 06:56:28.948 PST [2379] LOG:  database system is shut down
+2021-02-20 06:56:34.465 PST [13210] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 06:56:34.466 PST [13210] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 06:56:34.467 PST [13210] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 06:56:34.470 PST [13211] LOG:  database system was shut down at 2021-02-20 06:56:28 PST
+2021-02-20 06:56:34.472 PST [13210] LOG:  database system is ready to accept connections
+2021-02-20 06:56:43.195 PST [13210] LOG:  server process (PID 13224) was terminated by signal 11: Segmentation fault
+2021-02-20 06:56:43.195 PST [13210] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:56:43.195 PST [13210] LOG:  terminating any other active server processes
+2021-02-20 06:56:43.196 PST [13226] FATAL:  the database system is in recovery mode
+2021-02-20 06:56:43.196 PST [13210] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:56:43.203 PST [13227] LOG:  database system was interrupted; last known up at 2021-02-20 06:56:34 PST
+2021-02-20 06:56:43.210 PST [13227] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:56:43.212 PST [13227] LOG:  invalid record length at 0/162A9C8: wanted 24, got 0
+2021-02-20 06:56:43.212 PST [13227] LOG:  redo is not required
+2021-02-20 06:56:43.217 PST [13210] LOG:  database system is ready to accept connections
+2021-02-20 06:58:24.983 PST [13210] LOG:  server process (PID 13237) was terminated by signal 11: Segmentation fault
+2021-02-20 06:58:24.983 PST [13210] DETAIL:  Failed process was running: SELECT pg_catalog.quote_ident(datname) FROM pg_catalog.pg_database  WHERE substring(pg_catalog.quote_ident(datname),1,4)='post'
+	LIMIT 1000
+2021-02-20 06:58:24.983 PST [13210] LOG:  terminating any other active server processes
+2021-02-20 06:58:24.984 PST [13210] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:58:24.991 PST [13341] LOG:  database system was interrupted; last known up at 2021-02-20 06:56:43 PST
+2021-02-20 06:58:24.998 PST [13341] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:58:24.999 PST [13341] LOG:  redo starts at 0/162AA40
+2021-02-20 06:58:24.999 PST [13341] LOG:  invalid record length at 0/162AA78: wanted 24, got 0
+2021-02-20 06:58:25.000 PST [13341] LOG:  redo done at 0/162AA40 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-20 06:58:25.004 PST [13210] LOG:  database system is ready to accept connections
+2021-02-20 06:58:33.075 PST [13210] LOG:  server process (PID 13353) was terminated by signal 11: Segmentation fault
+2021-02-20 06:58:33.075 PST [13210] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:58:33.075 PST [13210] LOG:  terminating any other active server processes
+2021-02-20 06:58:33.076 PST [13210] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:58:33.083 PST [13356] LOG:  database system was interrupted; last known up at 2021-02-20 06:58:24 PST
+2021-02-20 06:58:33.092 PST [13356] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:58:33.093 PST [13356] LOG:  invalid record length at 0/162AAF0: wanted 24, got 0
+2021-02-20 06:58:33.093 PST [13356] LOG:  redo is not required
+2021-02-20 06:58:33.099 PST [13210] LOG:  database system is ready to accept connections
+2021-02-20 06:58:44.583 PST [13210] LOG:  server process (PID 13376) was terminated by signal 11: Segmentation fault
+2021-02-20 06:58:44.583 PST [13210] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner",
+	  c2.relname as "Table"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	     LEFT JOIN pg_catalog.pg_index i ON i.indexrelid = c.oid
+	     LEFT JOIN pg_catalog.pg_class c2 ON i.indrelid = c2.oid
+	WHERE c.relkind IN ('i','I','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 06:58:44.584 PST [13210] LOG:  terminating any other active server processes
+2021-02-20 06:58:44.585 PST [13378] FATAL:  the database system is in recovery mode
+2021-02-20 06:58:44.585 PST [13210] LOG:  all server processes terminated; reinitializing
+2021-02-20 06:58:44.592 PST [13379] LOG:  database system was interrupted; last known up at 2021-02-20 06:58:33 PST
+2021-02-20 06:58:44.600 PST [13379] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 06:58:44.602 PST [13379] LOG:  invalid record length at 0/162AB68: wanted 24, got 0
+2021-02-20 06:58:44.602 PST [13379] LOG:  redo is not required
+2021-02-20 06:58:44.607 PST [13210] LOG:  database system is ready to accept connections
+2021-02-20 06:59:14.554 PST [13210] LOG:  received fast shutdown request
+2021-02-20 06:59:14.554 PST [13210] LOG:  aborting any active transactions
+2021-02-20 06:59:14.555 PST [13210] LOG:  background worker "logical replication launcher" (PID 13385) exited with exit code 1
+2021-02-20 06:59:14.556 PST [13380] LOG:  shutting down
+2021-02-20 06:59:14.561 PST [13210] LOG:  database system is shut down
+2021-02-20 06:59:14.667 PST [13423] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 06:59:14.668 PST [13423] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 06:59:14.670 PST [13423] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 06:59:14.672 PST [13425] LOG:  database system was shut down at 2021-02-20 06:59:14 PST
+2021-02-20 06:59:14.674 PST [13423] LOG:  database system is ready to accept connections
+-----------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        2021-02-20 07:00:39.141 PST [13435] LOG:  server process (PID 13445) was terminated by signal 11: Segmentation fault
+2021-02-20 07:00:39.141 PST [13435] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 07:00:39.142 PST [13435] LOG:  terminating any other active server processes
+2021-02-20 07:00:39.143 PST [13447] FATAL:  the database system is in recovery mode
+2021-02-20 07:00:39.143 PST [13435] LOG:  all server processes terminated; reinitializing
+2021-02-20 07:00:39.150 PST [13448] LOG:  database system was interrupted; last known up at 2021-02-20 07:00:15 PST
+2021-02-20 07:00:39.157 PST [13448] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 07:00:39.159 PST [13448] LOG:  redo starts at 0/162AD40
+2021-02-20 07:00:39.159 PST [13448] LOG:  invalid record length at 0/162AD78: wanted 24, got 0
+2021-02-20 07:00:39.159 PST [13448] LOG:  redo done at 0/162AD40 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-20 07:00:39.164 PST [13435] LOG:  database system is ready to accept connections
+2021-02-20 07:14:34.411 PST [13435] LOG:  received fast shutdown request
+2021-02-20 07:14:34.412 PST [13435] LOG:  aborting any active transactions
+2021-02-20 07:14:34.413 PST [13435] LOG:  background worker "logical replication launcher" (PID 13454) exited with exit code 1
+2021-02-20 07:14:34.413 PST [13449] LOG:  shutting down
+2021-02-20 07:14:34.419 PST [13435] LOG:  database system is shut down
+2021-02-20 07:17:35.274 PST [13697] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 07:17:35.274 PST [13697] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 07:17:35.276 PST [13697] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 07:17:35.279 PST [13698] LOG:  database system was shut down at 2021-02-20 07:14:34 PST
+2021-02-20 07:17:35.281 PST [13697] LOG:  database system is ready to accept connections
+2021-02-20 07:18:01.092 PST [13697] LOG:  server process (PID 13708) was terminated by signal 11: Segmentation fault
+2021-02-20 07:18:01.092 PST [13697] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 07:18:01.092 PST [13697] LOG:  terminating any other active server processes
+2021-02-20 07:18:01.093 PST [13711] FATAL:  the database system is in recovery mode
+2021-02-20 07:18:01.093 PST [13697] LOG:  all server processes terminated; reinitializing
+2021-02-20 07:18:01.100 PST [13712] LOG:  database system was interrupted; last known up at 2021-02-20 07:17:35 PST
+2021-02-20 07:18:01.110 PST [13712] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 07:18:01.112 PST [13712] LOG:  redo starts at 0/162AEA0
+2021-02-20 07:18:01.112 PST [13712] LOG:  invalid record length at 0/162AED8: wanted 24, got 0
+2021-02-20 07:18:01.112 PST [13712] LOG:  redo done at 0/162AEA0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-20 07:18:01.117 PST [13697] LOG:  database system is ready to accept connections
+2021-02-20 07:18:19.701 PST [13697] LOG:  server process (PID 13720) was terminated by signal 11: Segmentation fault
+2021-02-20 07:18:19.701 PST [13697] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 07:18:19.702 PST [13697] LOG:  terminating any other active server processes
+2021-02-20 07:18:19.720 PST [13722] FATAL:  the database system is in recovery mode
+2021-02-20 07:18:19.721 PST [13697] LOG:  all server processes terminated; reinitializing
+2021-02-20 07:18:19.729 PST [13723] LOG:  database system was interrupted; last known up at 2021-02-20 07:18:01 PST
+2021-02-20 07:18:19.735 PST [13723] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 07:18:19.737 PST [13723] LOG:  redo starts at 0/162AF50
+2021-02-20 07:18:19.737 PST [13723] LOG:  invalid record length at 0/162AF88: wanted 24, got 0
+2021-02-20 07:18:19.737 PST [13723] LOG:  redo done at 0/162AF50 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-20 07:18:19.742 PST [13697] LOG:  database system is ready to accept connections
+2021-02-20 07:28:57.729 PST [13697] LOG:  server process (PID 13740) was terminated by signal 11: Segmentation fault
+2021-02-20 07:28:57.729 PST [13697] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-20 07:28:57.729 PST [13697] LOG:  terminating any other active server processes
+2021-02-20 07:28:57.730 PST [13761] FATAL:  the database system is in recovery mode
+2021-02-20 07:28:57.730 PST [13697] LOG:  all server processes terminated; reinitializing
+2021-02-20 07:28:57.738 PST [13762] LOG:  database system was interrupted; last known up at 2021-02-20 07:18:19 PST
+2021-02-20 07:28:57.746 PST [13762] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-20 07:28:57.748 PST [13762] LOG:  redo starts at 0/162B000
+2021-02-20 07:28:57.748 PST [13762] LOG:  invalid record length at 0/162B038: wanted 24, got 0
+2021-02-20 07:28:57.748 PST [13762] LOG:  redo done at 0/162B000 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-20 07:28:57.753 PST [13697] LOG:  database system is ready to accept connections
+2021-02-20 07:31:11.640 PST [13697] LOG:  received fast shutdown request
+2021-02-20 07:31:11.641 PST [13697] LOG:  aborting any active transactions
+2021-02-20 07:31:11.642 PST [13697] LOG:  background worker "logical replication launcher" (PID 13768) exited with exit code 1
+2021-02-20 07:31:11.642 PST [13763] LOG:  shutting down
+2021-02-20 07:31:11.647 PST [13697] LOG:  database system is shut down
+2021-02-20 07:31:11.753 PST [19166] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-20 07:31:11.754 PST [19166] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-20 07:31:11.755 PST [19166] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-20 07:31:11.758 PST [19168] LOG:  database system was shut down at 2021-02-20 07:31:11 PST
+2021-02-20 07:31:11.760 PST [19166] LOG:  database system is ready to accept connections
+2021-02-21 05:28:41.043 PST [33896] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-21 05:28:41.044 PST [33896] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-21 05:28:41.048 PST [33896] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-21 05:28:41.054 PST [33897] LOG:  database system was shut down at 2021-02-21 05:28:40 PST
+2021-02-21 05:28:41.060 PST [33896] LOG:  database system is ready to accept connections
+2021-02-21 05:29:24.242 PST [33906] ERROR:  syntax error at or near "table" at character 13
+2021-02-21 05:29:24.242 PST [33906] STATEMENT:  insert into table student values(1, "yyc", 100);
+2021-02-21 05:29:31.417 PST [33906] ERROR:  column "yyc" does not exist at character 31
+2021-02-21 05:29:31.417 PST [33906] STATEMENT:  insert into student values(1, "yyc", 100);
+2021-02-21 05:29:57.788 PST [33906] ERROR:  column "yyc" does not exist at character 31
+2021-02-21 05:29:57.788 PST [33906] STATEMENT:  insert into student values(1, "yyc", "100");
+2021-02-21 06:02:35.731 PST [33906] ERROR:  column reference "id" is ambiguous at character 64
+2021-02-21 06:02:35.731 PST [33906] STATEMENT:  select t.pid, s.number from testtable t, student s where qid = id;
+2021-02-24 00:19:39.922 PST [66335] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 00:19:39.925 PST [66335] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 00:19:39.928 PST [66335] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 00:19:39.933 PST [66336] LOG:  database system was shut down at 2021-02-24 00:19:29 PST
+2021-02-24 00:19:39.939 PST [66335] LOG:  database system is ready to accept connections
+2021-02-24 00:20:00.358 PST [66335] LOG:  received fast shutdown request
+2021-02-24 00:20:00.361 PST [66335] LOG:  aborting any active transactions
+2021-02-24 00:20:00.362 PST [66335] LOG:  background worker "logical replication launcher" (PID 66342) exited with exit code 1
+2021-02-24 00:20:00.362 PST [66337] LOG:  shutting down
+2021-02-24 00:20:00.374 PST [66335] LOG:  database system is shut down
+2021-02-24 00:20:02.443 PST [66350] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 00:20:02.445 PST [66350] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 00:20:02.449 PST [66350] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 00:20:02.456 PST [66351] LOG:  database system was shut down at 2021-02-24 00:20:00 PST
+2021-02-24 00:20:02.461 PST [66350] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("IsPointerList(list)", File: "list.c", Line: 323, PID: 66359)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x555a826a8e43]
+postgres: pguser testdb [local] SELECT(lappend+0x43)[0x555a8234f93d]
+postgres: pguser testdb [local] SELECT(+0x15d2f5)[0x555a8208c2f5]
+postgres: pguser testdb [local] SELECT(+0x15d38c)[0x555a8208c38c]
+postgres: pguser testdb [local] SELECT(get_columns_from_stmt+0x241)[0x555a8208c6b4]
+postgres: pguser testdb [local] SELECT(index_recommend+0x29)[0x555a8208b6d9]
+postgres: pguser testdb [local] SELECT(+0x5d1195)[0x555a82500195]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x555a82504b67]
+postgres: pguser testdb [local] SELECT(+0x50d271)[0x555a8243c271]
+postgres: pguser testdb [local] SELECT(+0x50cb33)[0x555a8243bb33]
+postgres: pguser testdb [local] SELECT(+0x508e03)[0x555a82437e03]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x555a824375b4]
+postgres: pguser testdb [local] SELECT(+0x400c34)[0x555a8232fc34]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7f3ce5d3cbf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x555a81fea29a]
+2021-02-24 00:20:18.578 PST [66350] LOG:  server process (PID 66359) was terminated by signal 6: Aborted
+2021-02-24 00:20:18.578 PST [66350] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-24 00:20:18.579 PST [66350] LOG:  terminating any other active server processes
+2021-02-24 00:20:18.581 PST [66361] FATAL:  the database system is in recovery mode
+2021-02-24 00:20:18.582 PST [66350] LOG:  all server processes terminated; reinitializing
+2021-02-24 00:20:18.596 PST [66362] LOG:  database system was interrupted; last known up at 2021-02-24 00:20:02 PST
+2021-02-24 00:20:18.620 PST [66362] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 00:20:18.622 PST [66362] LOG:  redo starts at 0/168C298
+2021-02-24 00:20:18.622 PST [66362] LOG:  invalid record length at 0/168C2D0: wanted 24, got 0
+2021-02-24 00:20:18.623 PST [66362] LOG:  redo done at 0/168C298 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-24 00:20:18.631 PST [66350] LOG:  database system is ready to accept connections
+2021-02-24 00:20:44.186 PST [66350] LOG:  server process (PID 66370) was terminated by signal 11: Segmentation fault
+2021-02-24 00:20:44.186 PST [66350] DETAIL:  Failed process was running: select pg_backend_pid();
+2021-02-24 00:20:44.187 PST [66350] LOG:  terminating any other active server processes
+2021-02-24 00:20:44.188 PST [66373] FATAL:  the database system is in recovery mode
+2021-02-24 00:20:44.190 PST [66350] LOG:  all server processes terminated; reinitializing
+2021-02-24 00:20:44.204 PST [66374] LOG:  database system was interrupted; last known up at 2021-02-24 00:20:18 PST
+2021-02-24 00:20:44.216 PST [66374] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 00:20:44.219 PST [66374] LOG:  redo starts at 0/168C348
+2021-02-24 00:20:44.219 PST [66374] LOG:  invalid record length at 0/168C380: wanted 24, got 0
+2021-02-24 00:20:44.219 PST [66374] LOG:  redo done at 0/168C348 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-24 00:20:44.232 PST [66350] LOG:  database system is ready to accept connections
+2021-02-24 00:22:06.884 PST [2298] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 00:22:06.886 PST [2298] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 00:22:06.890 PST [2298] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 00:22:06.903 PST [2301] LOG:  database system was interrupted; last known up at 2021-02-24 00:20:44 PST
+2021-02-24 00:22:06.939 PST [2301] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 00:22:06.945 PST [2301] LOG:  invalid record length at 0/168C3F8: wanted 24, got 0
+2021-02-24 00:22:06.945 PST [2301] LOG:  redo is not required
+2021-02-24 00:22:06.969 PST [2298] LOG:  database system is ready to accept connections
+2021-02-24 00:22:15.141 PST [2298] LOG:  received fast shutdown request
+2021-02-24 00:22:15.142 PST [2298] LOG:  aborting any active transactions
+2021-02-24 00:22:15.144 PST [2298] LOG:  background worker "logical replication launcher" (PID 2307) exited with exit code 1
+2021-02-24 00:22:15.144 PST [2302] LOG:  shutting down
+2021-02-24 00:22:15.154 PST [2298] LOG:  database system is shut down
+2021-02-24 00:22:15.338 PST [2324] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 00:22:15.339 PST [2324] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 00:22:15.344 PST [2324] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 00:22:15.350 PST [2325] LOG:  database system was shut down at 2021-02-24 00:22:15 PST
+2021-02-24 00:22:15.359 PST [2324] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("IsPointerList(list)", File: "list.c", Line: 323, PID: 2346)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x55aa9d314e43]
+postgres: pguser testdb [local] SELECT(lappend+0x43)[0x55aa9cfbb93d]
+postgres: pguser testdb [local] SELECT(+0x15d2f5)[0x55aa9ccf82f5]
+postgres: pguser testdb [local] SELECT(+0x15d38c)[0x55aa9ccf838c]
+postgres: pguser testdb [local] SELECT(get_columns_from_stmt+0x241)[0x55aa9ccf86b4]
+postgres: pguser testdb [local] SELECT(index_recommend+0x29)[0x55aa9ccf76d9]
+postgres: pguser testdb [local] SELECT(+0x5d1195)[0x55aa9d16c195]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x55aa9d170b67]
+postgres: pguser testdb [local] SELECT(+0x50d271)[0x55aa9d0a8271]
+postgres: pguser testdb [local] SELECT(+0x50cb33)[0x55aa9d0a7b33]
+postgres: pguser testdb [local] SELECT(+0x508e03)[0x55aa9d0a3e03]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x55aa9d0a35b4]
+postgres: pguser testdb [local] SELECT(+0x400c34)[0x55aa9cf9bc34]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7f7086bddbf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x55aa9cc5629a]
+2021-02-24 00:22:29.013 PST [2324] LOG:  server process (PID 2346) was terminated by signal 6: Aborted
+2021-02-24 00:22:29.013 PST [2324] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-24 00:22:29.013 PST [2324] LOG:  terminating any other active server processes
+2021-02-24 00:22:29.015 PST [2348] FATAL:  the database system is in recovery mode
+2021-02-24 00:22:29.016 PST [2324] LOG:  all server processes terminated; reinitializing
+2021-02-24 00:22:29.035 PST [2349] LOG:  database system was interrupted; last known up at 2021-02-24 00:22:15 PST
+2021-02-24 00:22:29.057 PST [2349] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 00:22:29.059 PST [2349] LOG:  invalid record length at 0/168C4E8: wanted 24, got 0
+2021-02-24 00:22:29.060 PST [2349] LOG:  redo is not required
+2021-02-24 00:22:29.073 PST [2324] LOG:  database system is ready to accept connections
+2021-02-24 00:22:41.918 PST [2324] LOG:  server process (PID 2357) was terminated by signal 11: Segmentation fault
+2021-02-24 00:22:41.918 PST [2324] DETAIL:  Failed process was running: select pg_backend_pid();
+2021-02-24 00:22:41.918 PST [2324] LOG:  terminating any other active server processes
+2021-02-24 00:22:41.919 PST [2374] FATAL:  the database system is in recovery mode
+2021-02-24 00:22:41.919 PST [2324] LOG:  all server processes terminated; reinitializing
+2021-02-24 00:22:41.929 PST [2375] LOG:  database system was interrupted; last known up at 2021-02-24 00:22:29 PST
+2021-02-24 00:22:41.943 PST [2375] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 00:22:41.945 PST [2375] LOG:  invalid record length at 0/168C560: wanted 24, got 0
+2021-02-24 00:22:41.946 PST [2375] LOG:  redo is not required
+2021-02-24 00:22:41.953 PST [2324] LOG:  database system is ready to accept connections
+2021-02-24 00:24:52.442 PST [2324] LOG:  server process (PID 2499) was terminated by signal 11: Segmentation fault
+2021-02-24 00:24:52.442 PST [2324] DETAIL:  Failed process was running: select pg_backend_pid();
+2021-02-24 00:24:52.442 PST [2324] LOG:  terminating any other active server processes
+2021-02-24 00:24:52.444 PST [2508] FATAL:  the database system is in recovery mode
+2021-02-24 00:24:52.445 PST [2324] LOG:  all server processes terminated; reinitializing
+2021-02-24 00:24:52.501 PST [2509] LOG:  database system was interrupted; last known up at 2021-02-24 00:22:41 PST
+2021-02-24 00:24:52.519 PST [2509] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 00:24:52.523 PST [2509] LOG:  redo starts at 0/168C5D8
+2021-02-24 00:24:52.524 PST [2509] LOG:  invalid record length at 0/168C610: wanted 24, got 0
+2021-02-24 00:24:52.525 PST [2509] LOG:  redo done at 0/168C5D8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-24 00:24:52.538 PST [2324] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("IsPointerList(list)", File: "list.c", Line: 323, PID: 2518)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x55aa9d314e43]
+postgres: pguser testdb [local] SELECT(lappend+0x43)[0x55aa9cfbb93d]
+postgres: pguser testdb [local] SELECT(+0x15d2f5)[0x55aa9ccf82f5]
+postgres: pguser testdb [local] SELECT(get_columns_from_stmt+0x241)[0x55aa9ccf86b4]
+postgres: pguser testdb [local] SELECT(index_recommend+0x29)[0x55aa9ccf76d9]
+postgres: pguser testdb [local] SELECT(+0x5d1195)[0x55aa9d16c195]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x55aa9d170b67]
+postgres: pguser testdb [local] SELECT(+0x50d271)[0x55aa9d0a8271]
+postgres: pguser testdb [local] SELECT(+0x50cb33)[0x55aa9d0a7b33]
+postgres: pguser testdb [local] SELECT(+0x508e03)[0x55aa9d0a3e03]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x55aa9d0a35b4]
+postgres: pguser testdb [local] SELECT(+0x400c34)[0x55aa9cf9bc34]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7f7086bddbf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x55aa9cc5629a]
+2021-02-24 00:26:04.318 PST [2324] LOG:  server process (PID 2518) was terminated by signal 6: Aborted
+2021-02-24 00:26:04.318 PST [2324] DETAIL:  Failed process was running: select * from student where pid = 1;
+2021-02-24 00:26:04.318 PST [2324] LOG:  terminating any other active server processes
+2021-02-24 00:26:04.320 PST [2539] FATAL:  the database system is in recovery mode
+2021-02-24 00:26:04.321 PST [2324] LOG:  all server processes terminated; reinitializing
+2021-02-24 00:26:04.350 PST [2540] LOG:  database system was interrupted; last known up at 2021-02-24 00:24:52 PST
+2021-02-24 00:26:04.370 PST [2540] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 00:26:04.373 PST [2540] LOG:  redo starts at 0/168C688
+2021-02-24 00:26:04.373 PST [2540] LOG:  invalid record length at 0/168C6C0: wanted 24, got 0
+2021-02-24 00:26:04.374 PST [2540] LOG:  redo done at 0/168C688 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-24 00:26:04.388 PST [2324] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("IsPointerList(list)", File: "list.c", Line: 323, PID: 2548)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x55aa9d314e43]
+postgres: pguser testdb [local] SELECT(lappend+0x43)[0x55aa9cfbb93d]
+postgres: pguser testdb [local] SELECT(+0x15d2f5)[0x55aa9ccf82f5]
+postgres: pguser testdb [local] SELECT(+0x15d38c)[0x55aa9ccf838c]
+postgres: pguser testdb [local] SELECT(get_columns_from_stmt+0x241)[0x55aa9ccf86b4]
+postgres: pguser testdb [local] SELECT(index_recommend+0x29)[0x55aa9ccf76d9]
+postgres: pguser testdb [local] SELECT(+0x5d1195)[0x55aa9d16c195]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x55aa9d170b67]
+postgres: pguser testdb [local] SELECT(+0x50d271)[0x55aa9d0a8271]
+postgres: pguser testdb [local] SELECT(+0x50cb33)[0x55aa9d0a7b33]
+postgres: pguser testdb [local] SELECT(+0x508e03)[0x55aa9d0a3e03]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x55aa9d0a35b4]
+postgres: pguser testdb [local] SELECT(+0x400c34)[0x55aa9cf9bc34]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7f7086bddbf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x55aa9cc5629a]
+2021-02-24 00:26:08.322 PST [2324] LOG:  server process (PID 2548) was terminated by signal 6: Aborted
+2021-02-24 00:26:08.322 PST [2324] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-24 00:26:08.323 PST [2324] LOG:  terminating any other active server processes
+2021-02-24 00:26:08.324 PST [2553] FATAL:  the database system is in recovery mode
+2021-02-24 00:26:08.325 PST [2324] LOG:  all server processes terminated; reinitializing
+2021-02-24 00:26:08.348 PST [2554] LOG:  database system was interrupted; last known up at 2021-02-24 00:26:04 PST
+2021-02-24 00:26:08.362 PST [2554] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 00:26:08.365 PST [2554] LOG:  invalid record length at 0/168C738: wanted 24, got 0
+2021-02-24 00:26:08.366 PST [2554] LOG:  redo is not required
+2021-02-24 00:26:08.381 PST [2324] LOG:  database system is ready to accept connections
+2021-02-24 00:30:00.953 PST [2324] LOG:  server process (PID 2585) was terminated by signal 11: Segmentation fault
+2021-02-24 00:30:00.953 PST [2324] DETAIL:  Failed process was running: select pg_backend_pid();
+2021-02-24 00:30:00.954 PST [2324] LOG:  terminating any other active server processes
+2021-02-24 00:30:00.955 PST [2324] LOG:  all server processes terminated; reinitializing
+2021-02-24 00:30:00.968 PST [2610] LOG:  database system was interrupted; last known up at 2021-02-24 00:26:08 PST
+2021-02-24 00:30:00.978 PST [2610] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 00:30:00.981 PST [2610] LOG:  redo starts at 0/168C7B0
+2021-02-24 00:30:00.982 PST [2610] LOG:  invalid record length at 0/168C7E8: wanted 24, got 0
+2021-02-24 00:30:00.982 PST [2610] LOG:  redo done at 0/168C7B0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-24 00:30:00.994 PST [2324] LOG:  database system is ready to accept connections
+2021-02-24 03:10:58.303 PST [2324] LOG:  server process (PID 2618) was terminated by signal 11: Segmentation fault
+2021-02-24 03:10:58.303 PST [2324] DETAIL:  Failed process was running: select pg_backend_pid();
+2021-02-24 03:10:58.303 PST [2324] LOG:  terminating any other active server processes
+2021-02-24 03:10:58.304 PST [4031] FATAL:  the database system is in recovery mode
+2021-02-24 03:10:58.305 PST [2324] LOG:  all server processes terminated; reinitializing
+2021-02-24 03:10:58.311 PST [4032] LOG:  database system was interrupted; last known up at 2021-02-24 00:30:00 PST
+2021-02-24 03:10:58.319 PST [4032] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 03:10:58.320 PST [4032] LOG:  redo starts at 0/168C860
+2021-02-24 03:10:58.321 PST [4032] LOG:  invalid record length at 0/168C898: wanted 24, got 0
+2021-02-24 03:10:58.321 PST [4032] LOG:  redo done at 0/168C860 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-24 03:10:58.326 PST [2324] LOG:  database system is ready to accept connections
+2021-02-24 03:31:28.682 PST [2324] LOG:  received fast shutdown request
+2021-02-24 03:31:28.683 PST [2324] LOG:  aborting any active transactions
+2021-02-24 03:31:28.683 PST [2324] LOG:  background worker "logical replication launcher" (PID 4038) exited with exit code 1
+2021-02-24 03:31:28.683 PST [4033] LOG:  shutting down
+2021-02-24 03:31:28.689 PST [2324] LOG:  database system is shut down
+2021-02-24 03:31:32.514 PST [9526] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 03:31:32.515 PST [9526] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 03:31:32.516 PST [9526] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 03:31:32.518 PST [9527] LOG:  database system was shut down at 2021-02-24 03:31:28 PST
+2021-02-24 03:31:32.520 PST [9526] LOG:  database system is ready to accept connections
+2021-02-24 03:47:25.301 PST [9526] LOG:  received fast shutdown request
+2021-02-24 03:47:25.301 PST [9526] LOG:  aborting any active transactions
+2021-02-24 03:47:25.303 PST [9526] LOG:  background worker "logical replication launcher" (PID 9533) exited with exit code 1
+2021-02-24 03:47:25.303 PST [9528] LOG:  shutting down
+2021-02-24 03:47:25.308 PST [9526] LOG:  database system is shut down
+2021-02-24 03:47:27.513 PST [14970] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 03:47:27.513 PST [14970] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 03:47:27.515 PST [14970] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 03:47:27.517 PST [14971] LOG:  database system was shut down at 2021-02-24 03:47:25 PST
+2021-02-24 03:47:27.519 PST [14970] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("IsPointerList(list)", File: "list.c", Line: 323, PID: 14979)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x559c019b8ede]
+postgres: pguser testdb [local] SELECT(lappend+0x43)[0x559c0165f9d8]
+postgres: pguser testdb [local] SELECT(+0x15d31e)[0x559c0139c31e]
+postgres: pguser testdb [local] SELECT(+0x15d3b8)[0x559c0139c3b8]
+postgres: pguser testdb [local] SELECT(get_columns_from_stmt+0x26d)[0x559c0139c723]
+postgres: pguser testdb [local] SELECT(index_recommend+0x29)[0x559c0139b6d9]
+postgres: pguser testdb [local] SELECT(+0x5d1230)[0x559c01810230]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x559c01814c02]
+postgres: pguser testdb [local] SELECT(+0x50d30c)[0x559c0174c30c]
+postgres: pguser testdb [local] SELECT(+0x50cbce)[0x559c0174bbce]
+postgres: pguser testdb [local] SELECT(+0x508e9e)[0x559c01747e9e]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x559c0174764f]
+postgres: pguser testdb [local] SELECT(+0x400ccf)[0x559c0163fccf]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7fac0509cbf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x559c012fa29a]
+2021-02-24 03:48:16.236 PST [14970] LOG:  server process (PID 14979) was terminated by signal 6: Aborted
+2021-02-24 03:48:16.236 PST [14970] DETAIL:  Failed process was running: select * from testtable where pid > 20 and qid < 30;
+2021-02-24 03:48:16.236 PST [14970] LOG:  terminating any other active server processes
+2021-02-24 03:48:16.237 PST [14987] FATAL:  the database system is in recovery mode
+2021-02-24 03:48:16.237 PST [14970] LOG:  all server processes terminated; reinitializing
+2021-02-24 03:48:16.244 PST [14988] LOG:  database system was interrupted; last known up at 2021-02-24 03:47:27 PST
+2021-02-24 03:48:16.253 PST [14988] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 03:48:16.255 PST [14988] LOG:  redo starts at 0/168CB58
+2021-02-24 03:48:16.255 PST [14988] LOG:  invalid record length at 0/168CB90: wanted 24, got 0
+2021-02-24 03:48:16.255 PST [14988] LOG:  redo done at 0/168CB58 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-24 03:48:16.259 PST [14970] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("IsPointerList(list)", File: "list.c", Line: 323, PID: 14997)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x559c019b8ede]
+postgres: pguser testdb [local] SELECT(lappend+0x43)[0x559c0165f9d8]
+postgres: pguser testdb [local] SELECT(+0x15d31e)[0x559c0139c31e]
+postgres: pguser testdb [local] SELECT(+0x15d3b8)[0x559c0139c3b8]
+postgres: pguser testdb [local] SELECT(get_columns_from_stmt+0x26d)[0x559c0139c723]
+postgres: pguser testdb [local] SELECT(index_recommend+0x29)[0x559c0139b6d9]
+postgres: pguser testdb [local] SELECT(+0x5d1230)[0x559c01810230]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x559c01814c02]
+postgres: pguser testdb [local] SELECT(+0x50d30c)[0x559c0174c30c]
+postgres: pguser testdb [local] SELECT(+0x50cbce)[0x559c0174bbce]
+postgres: pguser testdb [local] SELECT(+0x508e9e)[0x559c01747e9e]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x559c0174764f]
+postgres: pguser testdb [local] SELECT(+0x400ccf)[0x559c0163fccf]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7fac0509cbf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x559c012fa29a]
+2021-02-24 03:48:20.993 PST [14970] LOG:  server process (PID 14997) was terminated by signal 6: Aborted
+2021-02-24 03:48:20.993 PST [14970] DETAIL:  Failed process was running: select * from testtable where pid > 20 and qid < 30;
+2021-02-24 03:48:20.993 PST [14970] LOG:  terminating any other active server processes
+2021-02-24 03:48:20.994 PST [14999] FATAL:  the database system is in recovery mode
+2021-02-24 03:48:20.995 PST [14970] LOG:  all server processes terminated; reinitializing
+2021-02-24 03:48:21.001 PST [15000] LOG:  database system was interrupted; last known up at 2021-02-24 03:48:16 PST
+2021-02-24 03:48:21.008 PST [15000] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 03:48:21.010 PST [15000] LOG:  invalid record length at 0/168CC08: wanted 24, got 0
+2021-02-24 03:48:21.010 PST [15000] LOG:  redo is not required
+2021-02-24 03:48:21.015 PST [14970] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("IsPointerList(list)", File: "list.c", Line: 323, PID: 15008)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x559c019b8ede]
+postgres: pguser testdb [local] SELECT(lappend+0x43)[0x559c0165f9d8]
+postgres: pguser testdb [local] SELECT(+0x15d31e)[0x559c0139c31e]
+postgres: pguser testdb [local] SELECT(+0x15d3b8)[0x559c0139c3b8]
+postgres: pguser testdb [local] SELECT(get_columns_from_stmt+0x26d)[0x559c0139c723]
+postgres: pguser testdb [local] SELECT(index_recommend+0x29)[0x559c0139b6d9]
+postgres: pguser testdb [local] SELECT(+0x5d1230)[0x559c01810230]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x559c01814c02]
+postgres: pguser testdb [local] SELECT(+0x50d30c)[0x559c0174c30c]
+postgres: pguser testdb [local] SELECT(+0x50cbce)[0x559c0174bbce]
+postgres: pguser testdb [local] SELECT(+0x508e9e)[0x559c01747e9e]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x559c0174764f]
+postgres: pguser testdb [local] SELECT(+0x400ccf)[0x559c0163fccf]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7fac0509cbf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x559c012fa29a]
+2021-02-24 03:54:30.445 PST [14970] LOG:  server process (PID 15008) was terminated by signal 6: Aborted
+2021-02-24 03:54:30.445 PST [14970] DETAIL:  Failed process was running: select * from testtable where pid > 20 and qid < 30;
+2021-02-24 03:54:30.445 PST [14970] LOG:  terminating any other active server processes
+2021-02-24 03:54:30.446 PST [15027] FATAL:  the database system is in recovery mode
+2021-02-24 03:54:30.447 PST [14970] LOG:  all server processes terminated; reinitializing
+2021-02-24 03:54:30.454 PST [15028] LOG:  database system was interrupted; last known up at 2021-02-24 03:48:21 PST
+2021-02-24 03:54:30.462 PST [15028] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-24 03:54:30.464 PST [15028] LOG:  redo starts at 0/168CC80
+2021-02-24 03:54:30.464 PST [15028] LOG:  invalid record length at 0/168CCB8: wanted 24, got 0
+2021-02-24 03:54:30.464 PST [15028] LOG:  redo done at 0/168CC80 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-24 03:54:30.469 PST [14970] LOG:  database system is ready to accept connections
+2021-02-24 03:56:40.373 PST [14970] LOG:  received fast shutdown request
+2021-02-24 03:56:40.375 PST [14970] LOG:  aborting any active transactions
+2021-02-24 03:56:40.375 PST [14970] LOG:  background worker "logical replication launcher" (PID 15034) exited with exit code 1
+2021-02-24 03:56:40.376 PST [15029] LOG:  shutting down
+2021-02-24 03:56:40.381 PST [14970] LOG:  database system is shut down
+2021-02-24 03:56:40.485 PST [20355] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 03:56:40.485 PST [20355] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 03:56:40.488 PST [20355] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 03:56:40.490 PST [20357] LOG:  database system was shut down at 2021-02-24 03:56:40 PST
+2021-02-24 03:56:40.492 PST [20355] LOG:  database system is ready to accept connections
+2021-02-24 04:39:17.438 PST [20355] LOG:  received fast shutdown request
+2021-02-24 04:39:17.439 PST [20355] LOG:  aborting any active transactions
+2021-02-24 04:39:17.440 PST [20355] LOG:  background worker "logical replication launcher" (PID 20363) exited with exit code 1
+2021-02-24 04:39:17.441 PST [20358] LOG:  shutting down
+2021-02-24 04:39:17.446 PST [20355] LOG:  database system is shut down
+2021-02-24 04:39:17.550 PST [37368] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 04:39:17.550 PST [37368] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 04:39:17.552 PST [37368] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 04:39:17.555 PST [37369] LOG:  database system was shut down at 2021-02-24 04:39:17 PST
+2021-02-24 04:39:17.557 PST [37368] LOG:  database system is ready to accept connections
+2021-02-24 04:57:15.229 PST [37377] ERROR:  invalid reference to FROM-clause entry for table "testtable" at character 48
+2021-02-24 04:57:15.229 PST [37377] HINT:  Perhaps you meant to reference the table alias "t".
+2021-02-24 04:57:15.229 PST [37377] STATEMENT:  select * from testtable t where t.pid > 20 and testtable.qid < t.id;
+2021-02-24 05:05:00.022 PST [37377] ERROR:  invalid reference to FROM-clause entry for table "testtable" at character 48
+2021-02-24 05:05:00.022 PST [37377] HINT:  Perhaps you meant to reference the table alias "t".
+2021-02-24 05:05:00.022 PST [37377] STATEMENT:  select * from testtable t where t.pid > 20 and testtable.qid < t.id;
+2021-02-24 05:31:33.512 PST [37368] LOG:  received fast shutdown request
+2021-02-24 05:31:33.513 PST [37368] LOG:  aborting any active transactions
+2021-02-24 05:31:33.514 PST [37368] LOG:  background worker "logical replication launcher" (PID 37375) exited with exit code 1
+2021-02-24 05:31:33.515 PST [37370] LOG:  shutting down
+2021-02-24 05:31:33.520 PST [37368] LOG:  database system is shut down
+2021-02-24 05:31:33.624 PST [38467] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 05:31:33.624 PST [38467] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 05:31:33.627 PST [38467] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 05:31:33.629 PST [38468] LOG:  database system was shut down at 2021-02-24 05:31:33 PST
+2021-02-24 05:31:33.631 PST [38467] LOG:  database system is ready to accept connections
+2021-02-24 21:09:48.966 PST [42871] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 21:09:48.967 PST [42871] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 21:09:48.968 PST [42871] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 21:09:48.971 PST [42872] LOG:  database system was shut down at 2021-02-24 21:09:48 PST
+2021-02-24 21:09:48.973 PST [42871] LOG:  database system is ready to accept connections
+2021-02-24 23:05:14.078 PST [42871] LOG:  received fast shutdown request
+2021-02-24 23:05:14.079 PST [42871] LOG:  aborting any active transactions
+2021-02-24 23:05:14.079 PST [42871] LOG:  background worker "logical replication launcher" (PID 42878) exited with exit code 1
+2021-02-24 23:05:14.079 PST [42873] LOG:  shutting down
+2021-02-24 23:05:14.084 PST [42871] LOG:  database system is shut down
+2021-02-24 23:05:14.190 PST [44276] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 23:05:14.191 PST [44276] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 23:05:14.193 PST [44276] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 23:05:14.195 PST [44277] LOG:  database system was shut down at 2021-02-24 23:05:14 PST
+2021-02-24 23:05:14.197 PST [44276] LOG:  database system is ready to accept connections
+2021-02-24 23:23:08.953 PST [44276] LOG:  received fast shutdown request
+2021-02-24 23:23:08.954 PST [44276] LOG:  aborting any active transactions
+2021-02-24 23:23:08.955 PST [44276] LOG:  background worker "logical replication launcher" (PID 44283) exited with exit code 1
+2021-02-24 23:23:08.955 PST [44278] LOG:  shutting down
+2021-02-24 23:23:08.960 PST [44276] LOG:  database system is shut down
+2021-02-24 23:23:09.064 PST [45192] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-24 23:23:09.065 PST [45192] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-24 23:23:09.067 PST [45192] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-24 23:23:09.070 PST [45193] LOG:  database system was shut down at 2021-02-24 23:23:08 PST
+2021-02-24 23:23:09.072 PST [45192] LOG:  database system is ready to accept connections
+2021-02-25 00:45:37.485 PST [45192] LOG:  received fast shutdown request
+2021-02-25 00:45:37.487 PST [45192] LOG:  aborting any active transactions
+2021-02-25 00:45:37.488 PST [45192] LOG:  background worker "logical replication launcher" (PID 45199) exited with exit code 1
+2021-02-25 00:45:37.488 PST [45194] LOG:  shutting down
+2021-02-25 00:45:37.493 PST [45192] LOG:  database system is shut down
+2021-02-25 00:45:37.597 PST [46628] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 00:45:37.597 PST [46628] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 00:45:37.599 PST [46628] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 00:45:37.602 PST [46629] LOG:  database system was shut down at 2021-02-25 00:45:37 PST
+2021-02-25 00:45:37.604 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 05:22:19.545 PST [46628] LOG:  server process (PID 46637) was terminated by signal 11: Segmentation fault
+2021-02-25 05:22:19.545 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner",
+	  c2.relname as "Table"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	     LEFT JOIN pg_catalog.pg_index i ON i.indexrelid = c.oid
+	     LEFT JOIN pg_catalog.pg_class c2 ON i.indrelid = c2.oid
+	WHERE c.relkind IN ('i','I','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 05:22:19.546 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 05:22:19.548 PST [48518] FATAL:  the database system is in recovery mode
+2021-02-25 05:22:19.548 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 05:22:19.570 PST [48519] LOG:  database system was interrupted; last known up at 2021-02-25 00:50:37 PST
+2021-02-25 05:22:19.594 PST [48519] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 05:22:19.598 PST [48519] LOG:  redo starts at 0/168D908
+2021-02-25 05:22:19.599 PST [48519] LOG:  invalid record length at 0/168D9F0: wanted 24, got 0
+2021-02-25 05:22:19.599 PST [48519] LOG:  redo done at 0/168D9B8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 05:22:19.613 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 05:22:30.286 PST [46628] LOG:  server process (PID 48528) was terminated by signal 11: Segmentation fault
+2021-02-25 05:22:30.286 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 05:22:30.286 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 05:22:30.289 PST [48530] FATAL:  the database system is in recovery mode
+2021-02-25 05:22:30.290 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 05:22:30.308 PST [48531] LOG:  database system was interrupted; last known up at 2021-02-25 05:22:19 PST
+2021-02-25 05:22:30.329 PST [48531] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 05:22:30.332 PST [48531] LOG:  invalid record length at 0/168DA68: wanted 24, got 0
+2021-02-25 05:22:30.333 PST [48531] LOG:  redo is not required
+2021-02-25 05:22:30.346 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 05:22:47.897 PST [48539] ERROR:  syntax error at or near "selct" at character 1
+2021-02-25 05:22:47.897 PST [48539] STATEMENT:  selct * from student
+	;
+2021-02-25 05:30:06.250 PST [46628] LOG:  server process (PID 48539) was terminated by signal 11: Segmentation fault
+2021-02-25 05:30:06.250 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 05:30:06.251 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 05:30:06.253 PST [48624] FATAL:  the database system is in recovery mode
+2021-02-25 05:30:06.254 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 05:30:06.266 PST [48625] LOG:  database system was interrupted; last known up at 2021-02-25 05:22:30 PST
+2021-02-25 05:30:06.281 PST [48625] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 05:30:06.283 PST [48625] LOG:  redo starts at 0/168DAE0
+2021-02-25 05:30:06.284 PST [48625] LOG:  invalid record length at 0/168DB18: wanted 24, got 0
+2021-02-25 05:30:06.284 PST [48625] LOG:  redo done at 0/168DAE0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 05:30:06.295 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 05:31:36.638 PST [46628] LOG:  server process (PID 48633) was terminated by signal 11: Segmentation fault
+2021-02-25 05:31:36.638 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 05:31:36.638 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 05:31:36.639 PST [48643] FATAL:  the database system is in recovery mode
+2021-02-25 05:31:36.640 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 05:31:36.651 PST [48644] LOG:  database system was interrupted; last known up at 2021-02-25 05:30:06 PST
+2021-02-25 05:31:36.663 PST [48644] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 05:31:36.668 PST [48644] LOG:  redo starts at 0/168DB90
+2021-02-25 05:31:36.668 PST [48644] LOG:  invalid record length at 0/168DBC8: wanted 24, got 0
+2021-02-25 05:31:36.669 PST [48644] LOG:  redo done at 0/168DB90 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 05:31:36.680 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 05:45:09.011 PST [46628] LOG:  server process (PID 48652) was terminated by signal 11: Segmentation fault
+2021-02-25 05:45:09.011 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 05:45:09.012 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 05:45:09.013 PST [48726] FATAL:  the database system is in recovery mode
+2021-02-25 05:45:09.014 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 05:45:09.028 PST [48727] LOG:  database system was interrupted; last known up at 2021-02-25 05:31:36 PST
+2021-02-25 05:45:09.052 PST [48727] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 05:45:09.056 PST [48727] LOG:  redo starts at 0/168DC40
+2021-02-25 05:45:09.057 PST [48727] LOG:  invalid record length at 0/168DC78: wanted 24, got 0
+2021-02-25 05:45:09.058 PST [48727] LOG:  redo done at 0/168DC40 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 05:45:09.074 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 05:53:05.193 PST [46628] LOG:  server process (PID 48735) was terminated by signal 11: Segmentation fault
+2021-02-25 05:53:05.193 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 05:53:05.194 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 05:53:05.196 PST [48790] FATAL:  the database system is in recovery mode
+2021-02-25 05:53:05.197 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 05:53:05.216 PST [48791] LOG:  database system was interrupted; last known up at 2021-02-25 05:45:09 PST
+2021-02-25 05:53:05.239 PST [48791] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 05:53:05.244 PST [48791] LOG:  redo starts at 0/168DCF0
+2021-02-25 05:53:05.245 PST [48791] LOG:  invalid record length at 0/168DD28: wanted 24, got 0
+2021-02-25 05:53:05.245 PST [48791] LOG:  redo done at 0/168DCF0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 05:53:05.260 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 05:54:13.801 PST [48799] ERROR:  syntax error at or near "bby" at character 38
+2021-02-25 05:54:13.801 PST [48799] STATEMENT:  select pid, qid from testtable order bby 1,2;
+2021-02-25 06:14:14.684 PST [46628] LOG:  server process (PID 48912) was terminated by signal 11: Segmentation fault
+2021-02-25 06:14:14.684 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 06:14:14.685 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 06:14:14.686 PST [48921] FATAL:  the database system is in recovery mode
+2021-02-25 06:14:14.687 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 06:14:14.705 PST [48922] LOG:  database system was interrupted; last known up at 2021-02-25 05:53:05 PST
+2021-02-25 06:14:14.723 PST [48922] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 06:14:14.728 PST [48922] LOG:  redo starts at 0/168DDA0
+2021-02-25 06:14:14.729 PST [48922] LOG:  invalid record length at 0/168DDD8: wanted 24, got 0
+2021-02-25 06:14:14.730 PST [48922] LOG:  redo done at 0/168DDA0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 06:14:14.745 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 06:15:05.231 PST [46628] LOG:  server process (PID 48930) was terminated by signal 11: Segmentation fault
+2021-02-25 06:15:05.231 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 06:15:05.231 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 06:15:05.233 PST [48975] FATAL:  the database system is in recovery mode
+2021-02-25 06:15:05.233 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 06:15:05.252 PST [48976] LOG:  database system was interrupted; last known up at 2021-02-25 06:14:14 PST
+2021-02-25 06:15:05.268 PST [48976] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 06:15:05.272 PST [48976] LOG:  redo starts at 0/168DE50
+2021-02-25 06:15:05.272 PST [48976] LOG:  invalid record length at 0/168DE88: wanted 24, got 0
+2021-02-25 06:15:05.272 PST [48976] LOG:  redo done at 0/168DE50 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 06:15:05.286 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 06:23:24.806 PST [46628] LOG:  server process (PID 48984) was terminated by signal 11: Segmentation fault
+2021-02-25 06:23:24.806 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 06:23:24.807 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 06:23:24.809 PST [49011] FATAL:  the database system is in recovery mode
+2021-02-25 06:23:24.810 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 06:23:24.830 PST [49012] LOG:  database system was interrupted; last known up at 2021-02-25 06:15:05 PST
+2021-02-25 06:23:24.851 PST [49012] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 06:23:24.854 PST [49012] LOG:  redo starts at 0/168DF00
+2021-02-25 06:23:24.855 PST [49012] LOG:  invalid record length at 0/168DF38: wanted 24, got 0
+2021-02-25 06:23:24.855 PST [49012] LOG:  redo done at 0/168DF00 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 06:23:24.869 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 06:35:14.695 PST [46628] LOG:  server process (PID 49020) was terminated by signal 11: Segmentation fault
+2021-02-25 06:35:14.695 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 06:35:14.695 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 06:35:14.697 PST [49144] FATAL:  the database system is in recovery mode
+2021-02-25 06:35:14.698 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 06:35:14.716 PST [49145] LOG:  database system was interrupted; last known up at 2021-02-25 06:23:24 PST
+2021-02-25 06:35:14.727 PST [49145] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 06:35:14.729 PST [49145] LOG:  redo starts at 0/168DFB0
+2021-02-25 06:35:14.730 PST [49145] LOG:  invalid record length at 0/168DFE8: wanted 24, got 0
+2021-02-25 06:35:14.730 PST [49145] LOG:  redo done at 0/168DFB0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 06:35:14.742 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 06:35:49.272 PST [46628] LOG:  server process (PID 49153) was terminated by signal 11: Segmentation fault
+2021-02-25 06:35:49.272 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 06:35:49.273 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 06:35:49.274 PST [49160] FATAL:  the database system is in recovery mode
+2021-02-25 06:35:49.275 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 06:35:49.290 PST [49161] LOG:  database system was interrupted; last known up at 2021-02-25 06:35:14 PST
+2021-02-25 06:35:49.304 PST [49161] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 06:35:49.306 PST [49161] LOG:  redo starts at 0/168E078
+2021-02-25 06:35:49.306 PST [49161] LOG:  invalid record length at 0/168E0B0: wanted 24, got 0
+2021-02-25 06:35:49.307 PST [49161] LOG:  redo done at 0/168E078 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 06:35:49.316 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 06:37:25.373 PST [46628] LOG:  server process (PID 49169) was terminated by signal 11: Segmentation fault
+2021-02-25 06:37:25.373 PST [46628] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 06:37:25.374 PST [46628] LOG:  terminating any other active server processes
+2021-02-25 06:37:25.376 PST [49178] FATAL:  the database system is in recovery mode
+2021-02-25 06:37:25.377 PST [46628] LOG:  all server processes terminated; reinitializing
+2021-02-25 06:37:25.396 PST [49179] LOG:  database system was interrupted; last known up at 2021-02-25 06:35:49 PST
+2021-02-25 06:37:25.408 PST [49179] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 06:37:25.411 PST [49179] LOG:  redo starts at 0/168E128
+2021-02-25 06:37:25.411 PST [49179] LOG:  invalid record length at 0/168E160: wanted 24, got 0
+2021-02-25 06:37:25.411 PST [49179] LOG:  redo done at 0/168E128 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 06:37:25.421 PST [46628] LOG:  database system is ready to accept connections
+2021-02-25 06:44:51.537 PST [46628] LOG:  received fast shutdown request
+2021-02-25 06:44:51.538 PST [46628] LOG:  aborting any active transactions
+2021-02-25 06:44:51.539 PST [46628] LOG:  background worker "logical replication launcher" (PID 49185) exited with exit code 1
+2021-02-25 06:44:51.539 PST [49180] LOG:  shutting down
+2021-02-25 06:44:51.549 PST [46628] LOG:  database system is shut down
+2021-02-25 06:44:51.663 PST [54531] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 06:44:51.664 PST [54531] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 06:44:51.667 PST [54531] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 06:44:51.673 PST [54532] LOG:  database system was shut down at 2021-02-25 06:44:51 PST
+2021-02-25 06:44:51.677 PST [54531] LOG:  database system is ready to accept connections
+2021-02-25 07:19:26.835 PST [54540] ERROR:  syntax error at or near "order" at character 15
+2021-02-25 07:19:26.835 PST [54540] STATEMENT:  select * from order by 1,2;
+2021-02-25 07:58:34.103 PST [54540] ERROR:  syntax error at or near "index" at character 8
+2021-02-25 07:58:34.103 PST [54540] STATEMENT:  delete index qqid_index
+	;
+2021-02-25 18:57:29.701 PST [61117] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 18:57:29.702 PST [61117] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 18:57:29.703 PST [61117] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 18:57:29.706 PST [61118] LOG:  database system was shut down at 2021-02-25 18:57:29 PST
+2021-02-25 18:57:29.708 PST [61117] LOG:  database system is ready to accept connections
+2021-02-25 20:53:30.905 PST [61117] LOG:  server process (PID 61126) was terminated by signal 11: Segmentation fault
+2021-02-25 20:53:30.905 PST [61117] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 20:53:30.905 PST [61117] LOG:  terminating any other active server processes
+2021-02-25 20:53:30.906 PST [61767] FATAL:  the database system is in recovery mode
+2021-02-25 20:53:30.906 PST [61117] LOG:  all server processes terminated; reinitializing
+2021-02-25 20:53:30.913 PST [61768] LOG:  database system was interrupted; last known up at 2021-02-25 19:02:30 PST
+2021-02-25 20:53:30.921 PST [61768] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 20:53:30.923 PST [61768] LOG:  redo starts at 0/16A3660
+2021-02-25 20:53:30.923 PST [61768] LOG:  invalid record length at 0/16A3748: wanted 24, got 0
+2021-02-25 20:53:30.923 PST [61768] LOG:  redo done at 0/16A3710 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 20:53:30.928 PST [61117] LOG:  database system is ready to accept connections
+2021-02-25 20:55:49.379 PST [61117] LOG:  received fast shutdown request
+2021-02-25 20:55:49.381 PST [61117] LOG:  aborting any active transactions
+2021-02-25 20:55:49.382 PST [61117] LOG:  background worker "logical replication launcher" (PID 61774) exited with exit code 1
+2021-02-25 20:55:49.382 PST [61769] LOG:  shutting down
+2021-02-25 20:55:49.388 PST [61117] LOG:  database system is shut down
+2021-02-25 20:55:49.491 PST [67085] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 20:55:49.491 PST [67085] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 20:55:49.493 PST [67085] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 20:55:49.495 PST [67086] LOG:  database system was shut down at 2021-02-25 20:55:49 PST
+2021-02-25 20:55:49.498 PST [67085] LOG:  database system is ready to accept connections
+2021-02-25 21:21:12.035 PST [67094] WARNING:  could not dump unrecognized node type: 2139062143
+   {
+   }
+
+2021-02-25 21:26:37.538 PST [67085] LOG:  server process (PID 67094) was terminated by signal 11: Segmentation fault
+2021-02-25 21:26:37.538 PST [67085] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 21:26:37.539 PST [67085] LOG:  terminating any other active server processes
+2021-02-25 21:26:37.540 PST [67296] FATAL:  the database system is in recovery mode
+2021-02-25 21:26:37.541 PST [67085] LOG:  all server processes terminated; reinitializing
+2021-02-25 21:26:37.548 PST [67297] LOG:  database system was interrupted; last known up at 2021-02-25 21:00:49 PST
+2021-02-25 21:26:37.559 PST [67297] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-25 21:26:37.561 PST [67297] LOG:  redo starts at 0/16A38A8
+2021-02-25 21:26:37.562 PST [67297] LOG:  invalid record length at 0/16A3990: wanted 24, got 0
+2021-02-25 21:26:37.562 PST [67297] LOG:  redo done at 0/16A3958 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-25 21:26:37.566 PST [67085] LOG:  database system is ready to accept connections
+2021-02-25 21:29:39.959 PST [67085] LOG:  received fast shutdown request
+2021-02-25 21:29:39.960 PST [67085] LOG:  aborting any active transactions
+2021-02-25 21:29:39.960 PST [67085] LOG:  background worker "logical replication launcher" (PID 67303) exited with exit code 1
+2021-02-25 21:29:39.961 PST [67298] LOG:  shutting down
+2021-02-25 21:29:39.967 PST [67085] LOG:  database system is shut down
+2021-02-25 21:29:40.071 PST [72612] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 21:29:40.071 PST [72612] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 21:29:40.073 PST [72612] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 21:29:40.076 PST [72613] LOG:  database system was shut down at 2021-02-25 21:29:39 PST
+2021-02-25 21:29:40.078 PST [72612] LOG:  database system is ready to accept connections
+2021-02-25 21:31:06.261 PST [72621] WARNING:  could not dump unrecognized node type: 64
+2021-02-25 21:31:06.261 PST [72621] WARNING:  could not dump unrecognized node type: 2
+2021-02-25 21:31:06.262 PST [72621] WARNING:  could not dump unrecognized node type: 64
+2021-02-25 21:31:06.262 PST [72621] WARNING:  could not dump unrecognized node type: 2
+2021-02-25 21:31:06.262 PST [72621] WARNING:  could not dump unrecognized node type: 256
+2021-02-25 21:31:06.262 PST [72621] WARNING:  could not dump unrecognized node type: 256
+(
+   {
+   }
+   {
+   }
+   {
+   }
+   {
+   }
+   {
+   }
+   {
+   }
+)
+
+(
+   {JOINEXPR 
+   :jointype 1 
+   :isNatural false 
+   :larg 
+      {JOINEXPR 
+      :jointype 1 
+      :isNatural false 
+      :larg 
+         {RANGEVAR 
+         :schemaname pg_catalog 
+         :relname pg_class 
+         :inh true 
+         :relpersistence p 
+         :alias 
+            {ALIAS 
+            :aliasname c 
+            :colnames <>
+            }
+         :location 416
+         }
+      :rarg 
+         {RANGEVAR 
+         :schemaname pg_catalog 
+         :relname pg_namespace 
+         :inh true 
+         :relpersistence p 
+         :alias 
+            {ALIAS 
+            :aliasname n 
+            :colnames <>
+            }
+         :location 453
+         }
+      :usingClause <> 
+      :quals 
+         {AEXPR  
+         :name ("=")
+         :lexpr 
+            {COLUMNREF 
+            :fields ("n" "oid")
+            :location 482
+            }
+         :rexpr 
+            {COLUMNREF 
+            :fields ("c" "relnamespace")
+            :location 490
+            }
+         :location 488
+         }
+      :alias <> 
+      :rtindex 0
+      }
+   :rarg 
+      {RANGEVAR 
+      :schemaname pg_catalog 
+      :relname pg_am 
+      :inh true 
+      :relpersistence p 
+      :alias 
+         {ALIAS 
+         :aliasname am 
+         :colnames <>
+         }
+      :location 520
+      }
+   :usingClause <> 
+   :quals 
+      {AEXPR  
+      :name ("=")
+      :lexpr 
+         {COLUMNREF 
+         :fields ("am" "oid")
+         :location 543
+         }
+      :rexpr 
+         {COLUMNREF 
+         :fields ("c" "relam")
+         :location 552
+         }
+      :location 550
+      }
+   :alias <> 
+   :rtindex 0
+   }
+)
+
+2021-02-25 22:21:15.003 PST [72612] LOG:  received fast shutdown request
+2021-02-25 22:21:15.004 PST [72612] LOG:  aborting any active transactions
+2021-02-25 22:21:15.004 PST [72612] LOG:  background worker "logical replication launcher" (PID 72619) exited with exit code 1
+2021-02-25 22:21:15.005 PST [72614] LOG:  shutting down
+2021-02-25 22:21:15.009 PST [72612] LOG:  database system is shut down
+2021-02-25 22:21:15.115 PST [82614] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 22:21:15.115 PST [82614] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 22:21:15.119 PST [82614] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 22:21:15.122 PST [82615] LOG:  database system was shut down at 2021-02-25 22:21:15 PST
+2021-02-25 22:21:15.125 PST [82614] LOG:  database system is ready to accept connections
+2021-02-25 22:21:31.528 PST [82623] ERROR:  permission denied: "pg_class" is a system catalog
+2021-02-25 22:21:31.528 PST [82623] STATEMENT:  SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 22:21:55.992 PST [82623] ERROR:  permission denied: "pg_class" is a system catalog
+2021-02-25 22:21:55.992 PST [82623] STATEMENT:  SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 22:31:24.069 PST [82623] ERROR:  permission denied: "pg_class" is a system catalog
+2021-02-25 22:31:24.069 PST [82623] STATEMENT:  SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 22:40:36.455 PST [82623] ERROR:  syntax error at or near "bt" at character 1
+2021-02-25 22:40:36.455 PST [82623] STATEMENT:  bt
+	;
+2021-02-25 22:40:38.815 PST [82623] ERROR:  permission denied: "pg_class" is a system catalog
+2021-02-25 22:40:38.815 PST [82623] STATEMENT:  SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner",
+	  c2.relname as "Table"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	     LEFT JOIN pg_catalog.pg_index i ON i.indexrelid = c.oid
+	     LEFT JOIN pg_catalog.pg_class c2 ON i.indrelid = c2.oid
+	WHERE c.relkind IN ('i','I','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 22:41:14.394 PST [82623] ERROR:  syntax error at or near "q" at character 1
+2021-02-25 22:41:14.394 PST [82623] STATEMENT:  q
+	;
+2021-02-25 22:44:05.017 PST [82614] LOG:  received fast shutdown request
+2021-02-25 22:44:05.018 PST [82614] LOG:  aborting any active transactions
+2021-02-25 22:44:05.019 PST [82614] LOG:  background worker "logical replication launcher" (PID 82621) exited with exit code 1
+2021-02-25 22:44:05.020 PST [82616] LOG:  shutting down
+2021-02-25 22:44:05.026 PST [82614] LOG:  database system is shut down
+2021-02-25 22:44:05.129 PST [88019] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 22:44:05.129 PST [88019] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 22:44:05.131 PST [88019] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 22:44:05.134 PST [88020] LOG:  database system was shut down at 2021-02-25 22:44:05 PST
+2021-02-25 22:44:05.136 PST [88019] LOG:  database system is ready to accept connections
+2021-02-25 22:48:35.942 PST [88019] LOG:  received fast shutdown request
+2021-02-25 22:48:35.943 PST [88019] LOG:  aborting any active transactions
+2021-02-25 22:48:35.944 PST [88019] LOG:  background worker "logical replication launcher" (PID 88026) exited with exit code 1
+2021-02-25 22:48:35.944 PST [88021] LOG:  shutting down
+2021-02-25 22:48:35.951 PST [88019] LOG:  database system is shut down
+2021-02-25 22:48:36.054 PST [93384] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 22:48:36.055 PST [93384] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 22:48:36.056 PST [93384] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 22:48:36.059 PST [93385] LOG:  database system was shut down at 2021-02-25 22:48:35 PST
+2021-02-25 22:48:36.061 PST [93384] LOG:  database system is ready to accept connections
+2021-02-25 22:49:13.513 PST [93393] ERROR:  permission denied: "pg_class" is a system catalog
+2021-02-25 22:49:13.513 PST [93393] STATEMENT:  SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner",
+	  c2.relname as "Table"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	     LEFT JOIN pg_catalog.pg_index i ON i.indexrelid = c.oid
+	     LEFT JOIN pg_catalog.pg_class c2 ON i.indrelid = c2.oid
+	WHERE c.relkind IN ('i','I','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-25 22:59:24.095 PST [93384] LOG:  received fast shutdown request
+2021-02-25 22:59:24.096 PST [93384] LOG:  aborting any active transactions
+2021-02-25 22:59:24.097 PST [93384] LOG:  background worker "logical replication launcher" (PID 93391) exited with exit code 1
+2021-02-25 22:59:24.097 PST [93386] LOG:  shutting down
+2021-02-25 22:59:24.101 PST [93384] LOG:  database system is shut down
+2021-02-25 22:59:24.206 PST [98709] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 22:59:24.207 PST [98709] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 22:59:24.209 PST [98709] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 22:59:24.212 PST [98710] LOG:  database system was shut down at 2021-02-25 22:59:24 PST
+2021-02-25 22:59:24.214 PST [98709] LOG:  database system is ready to accept connections
+2021-02-25 23:09:51.896 PST [98709] LOG:  received fast shutdown request
+2021-02-25 23:09:51.897 PST [98709] LOG:  aborting any active transactions
+2021-02-25 23:09:51.898 PST [98709] LOG:  background worker "logical replication launcher" (PID 98716) exited with exit code 1
+2021-02-25 23:09:51.899 PST [98711] LOG:  shutting down
+2021-02-25 23:09:51.903 PST [98709] LOG:  database system is shut down
+2021-02-25 23:09:52.007 PST [104091] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-25 23:09:52.008 PST [104091] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-25 23:09:52.011 PST [104091] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-25 23:09:52.013 PST [104092] LOG:  database system was shut down at 2021-02-25 23:09:51 PST
+2021-02-25 23:09:52.016 PST [104091] LOG:  database system is ready to accept connections
+2021-02-25 23:14:00.886 PST [104100] ERROR:  permission denied: "pg_class" is a system catalog
+2021-02-25 23:14:00.886 PST [104100] STATEMENT:  SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-26 05:48:35.933 PST [110084] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-26 05:48:35.933 PST [110084] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-26 05:48:35.935 PST [110084] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-26 05:48:35.937 PST [110085] LOG:  database system was shut down at 2021-02-26 05:48:35 PST
+2021-02-26 05:48:35.940 PST [110084] LOG:  database system is ready to accept connections
+2021-02-26 05:55:29.992 PST [110084] LOG:  received fast shutdown request
+2021-02-26 05:55:29.993 PST [110084] LOG:  aborting any active transactions
+2021-02-26 05:55:29.994 PST [110084] LOG:  background worker "logical replication launcher" (PID 110091) exited with exit code 1
+2021-02-26 05:55:29.994 PST [110086] LOG:  shutting down
+2021-02-26 05:55:29.999 PST [110084] LOG:  database system is shut down
+2021-02-26 05:55:30.102 PST [115496] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-26 05:55:30.103 PST [115496] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-26 05:55:30.105 PST [115496] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-26 05:55:30.108 PST [115497] LOG:  database system was shut down at 2021-02-26 05:55:29 PST
+2021-02-26 05:55:30.110 PST [115496] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("lockmode != NoLock || IsBootstrapProcessingMode() || CheckRelationLockedByMe(r, AccessShareLock, true)", File: "relation.c", Line: 70, PID: 115505)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x55e15cfa3cc3]
+postgres: pguser testdb [local] SELECT(relation_open+0xf5)[0x55e15c8f9a91]
+postgres: pguser testdb [local] SELECT(relation_openrv+0x4b)[0x55e15c8f9c6f]
+postgres: pguser testdb [local] SELECT(table_openrv+0x20)[0x55e15c9cd200]
+postgres: pguser testdb [local] SELECT(stmt_contains_system_relation+0x7f)[0x55e15c985e25]
+postgres: pguser testdb [local] SELECT(query_not_involve_system_relation+0x18)[0x55e15c98548f]
+postgres: pguser testdb [local] SELECT(+0x5d2002)[0x55e15cdfb002]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x55e15cdff9e7]
+postgres: pguser testdb [local] SELECT(+0x50e0de)[0x55e15cd370de]
+postgres: pguser testdb [local] SELECT(+0x50d9a0)[0x55e15cd369a0]
+postgres: pguser testdb [local] SELECT(+0x509c70)[0x55e15cd32c70]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x55e15cd32421]
+postgres: pguser testdb [local] SELECT(+0x401aa1)[0x55e15cc2aaa1]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7f089e9b4bf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x55e15c8e438a]
+2021-02-26 05:57:12.467 PST [115496] LOG:  server process (PID 115505) was terminated by signal 6: Aborted
+2021-02-26 05:57:12.467 PST [115496] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-26 05:57:12.467 PST [115496] LOG:  terminating any other active server processes
+2021-02-26 05:57:12.468 PST [115514] FATAL:  the database system is in recovery mode
+2021-02-26 05:57:12.469 PST [115496] LOG:  all server processes terminated; reinitializing
+2021-02-26 05:57:12.476 PST [115515] LOG:  database system was interrupted; last known up at 2021-02-26 05:55:30 PST
+2021-02-26 05:57:12.483 PST [115515] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-26 05:57:12.485 PST [115515] LOG:  redo starts at 0/16BB1C8
+2021-02-26 05:57:12.485 PST [115515] LOG:  invalid record length at 0/16BB200: wanted 24, got 0
+2021-02-26 05:57:12.485 PST [115515] LOG:  redo done at 0/16BB1C8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-26 05:57:12.490 PST [115496] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("lockmode != NoLock || IsBootstrapProcessingMode() || CheckRelationLockedByMe(r, AccessShareLock, true)", File: "relation.c", Line: 70, PID: 115523)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x55e15cfa3cc3]
+postgres: pguser testdb [local] SELECT(relation_open+0xf5)[0x55e15c8f9a91]
+postgres: pguser testdb [local] SELECT(relation_openrv+0x4b)[0x55e15c8f9c6f]
+postgres: pguser testdb [local] SELECT(table_openrv+0x20)[0x55e15c9cd200]
+postgres: pguser testdb [local] SELECT(stmt_contains_system_relation+0x7f)[0x55e15c985e25]
+postgres: pguser testdb [local] SELECT(query_not_involve_system_relation+0x18)[0x55e15c98548f]
+postgres: pguser testdb [local] SELECT(+0x5d2002)[0x55e15cdfb002]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x55e15cdff9e7]
+postgres: pguser testdb [local] SELECT(+0x50e0de)[0x55e15cd370de]
+postgres: pguser testdb [local] SELECT(+0x50d9a0)[0x55e15cd369a0]
+postgres: pguser testdb [local] SELECT(+0x509c70)[0x55e15cd32c70]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x55e15cd32421]
+postgres: pguser testdb [local] SELECT(+0x401aa1)[0x55e15cc2aaa1]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7f089e9b4bf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x55e15c8e438a]
+2021-02-26 06:03:28.274 PST [115496] LOG:  server process (PID 115523) was terminated by signal 6: Aborted
+2021-02-26 06:03:28.274 PST [115496] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-26 06:03:28.275 PST [115496] LOG:  terminating any other active server processes
+2021-02-26 06:03:28.276 PST [115586] FATAL:  the database system is in recovery mode
+2021-02-26 06:03:28.276 PST [115496] LOG:  all server processes terminated; reinitializing
+2021-02-26 06:03:28.283 PST [115587] LOG:  database system was interrupted; last known up at 2021-02-26 05:57:12 PST
+2021-02-26 06:03:28.294 PST [115587] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-26 06:03:28.296 PST [115587] LOG:  redo starts at 0/16BB278
+2021-02-26 06:03:28.296 PST [115587] LOG:  invalid record length at 0/16BB2B0: wanted 24, got 0
+2021-02-26 06:03:28.297 PST [115587] LOG:  redo done at 0/16BB278 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-26 06:03:28.302 PST [115496] LOG:  database system is ready to accept connections
+TRAP: FailedAssertion("lockmode != NoLock || IsBootstrapProcessingMode() || CheckRelationLockedByMe(r, AccessShareLock, true)", File: "relation.c", Line: 70, PID: 115595)
+postgres: pguser testdb [local] SELECT(ExceptionalCondition+0xcc)[0x55e15cfa3cc3]
+postgres: pguser testdb [local] SELECT(relation_open+0xf5)[0x55e15c8f9a91]
+postgres: pguser testdb [local] SELECT(relation_openrv+0x4b)[0x55e15c8f9c6f]
+postgres: pguser testdb [local] SELECT(table_openrv+0x20)[0x55e15c9cd200]
+postgres: pguser testdb [local] SELECT(stmt_contains_system_relation+0x7f)[0x55e15c985e25]
+postgres: pguser testdb [local] SELECT(query_not_involve_system_relation+0x18)[0x55e15c98548f]
+postgres: pguser testdb [local] SELECT(+0x5d2002)[0x55e15cdfb002]
+postgres: pguser testdb [local] SELECT(PostgresMain+0x866)[0x55e15cdff9e7]
+postgres: pguser testdb [local] SELECT(+0x50e0de)[0x55e15cd370de]
+postgres: pguser testdb [local] SELECT(+0x50d9a0)[0x55e15cd369a0]
+postgres: pguser testdb [local] SELECT(+0x509c70)[0x55e15cd32c70]
+postgres: pguser testdb [local] SELECT(PostmasterMain+0x1270)[0x55e15cd32421]
+postgres: pguser testdb [local] SELECT(+0x401aa1)[0x55e15cc2aaa1]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7f089e9b4bf7]
+postgres: pguser testdb [local] SELECT(_start+0x2a)[0x55e15c8e438a]
+2021-02-26 06:10:56.864 PST [115496] LOG:  server process (PID 115595) was terminated by signal 6: Aborted
+2021-02-26 06:10:56.864 PST [115496] DETAIL:  Failed process was running: SELECT n.nspname as "Schema",
+	  c.relname as "Name",
+	  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as "Type",
+	  pg_catalog.pg_get_userbyid(c.relowner) as "Owner"
+	FROM pg_catalog.pg_class c
+	     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+	     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+	WHERE c.relkind IN ('r','p','v','m','S','f','')
+	      AND n.nspname <> 'pg_catalog'
+	      AND n.nspname !~ '^pg_toast'
+	      AND n.nspname <> 'information_schema'
+	  AND pg_catalog.pg_table_is_visible(c.oid)
+	ORDER BY 1,2;
+2021-02-26 06:10:56.864 PST [115496] LOG:  terminating any other active server processes
+2021-02-26 06:10:56.865 PST [115617] FATAL:  the database system is in recovery mode
+2021-02-26 06:10:56.866 PST [115496] LOG:  all server processes terminated; reinitializing
+2021-02-26 06:10:56.872 PST [115618] LOG:  database system was interrupted; last known up at 2021-02-26 06:03:28 PST
+2021-02-26 06:10:56.883 PST [115618] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-26 06:10:56.885 PST [115618] LOG:  redo starts at 0/16BB328
+2021-02-26 06:10:56.885 PST [115618] LOG:  invalid record length at 0/16BB360: wanted 24, got 0
+2021-02-26 06:10:56.885 PST [115618] LOG:  redo done at 0/16BB328 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-26 06:10:56.890 PST [115496] LOG:  database system is ready to accept connections
+2021-02-26 06:13:05.213 PST [115496] LOG:  received fast shutdown request
+2021-02-26 06:13:05.214 PST [115496] LOG:  aborting any active transactions
+2021-02-26 06:13:05.215 PST [115496] LOG:  background worker "logical replication launcher" (PID 115624) exited with exit code 1
+2021-02-26 06:13:05.215 PST [115619] LOG:  shutting down
+2021-02-26 06:13:05.221 PST [115496] LOG:  database system is shut down
+2021-02-26 06:13:05.325 PST [120934] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-26 06:13:05.325 PST [120934] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-26 06:13:05.328 PST [120934] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-26 06:13:05.330 PST [120935] LOG:  database system was shut down at 2021-02-26 06:13:05 PST
+2021-02-26 06:13:05.332 PST [120934] LOG:  database system is ready to accept connections
+2021-02-26 06:13:45.301 PST [120943] WARNING:  relcache reference leak: relation "pg_class" not closed
+2021-02-26 06:14:37.508 PST [120943] WARNING:  relcache reference leak: relation "pg_class" not closed
+2021-02-26 06:15:16.453 PST [120943] WARNING:  relcache reference leak: relation "student" not closed
+2021-02-26 06:15:30.870 PST [120943] WARNING:  relcache reference leak: relation "pg_class" not closed
+2021-02-26 21:36:20.256 PST [5094] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-26 21:36:20.257 PST [5094] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-26 21:36:20.259 PST [5094] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-26 21:36:20.261 PST [5095] LOG:  database system was shut down at 2021-02-26 21:36:20 PST
+2021-02-26 21:36:20.263 PST [5094] LOG:  database system is ready to accept connections
+(o 16407)
+
+2021-02-26 21:41:57.331 PST [5094] LOG:  server process (PID 5103) was terminated by signal 11: Segmentation fault
+2021-02-26 21:41:57.331 PST [5094] DETAIL:  Failed process was running: select * from testtable;
+2021-02-26 21:41:57.332 PST [5094] LOG:  terminating any other active server processes
+2021-02-26 21:41:57.332 PST [5122] FATAL:  the database system is in recovery mode
+2021-02-26 21:41:57.333 PST [5094] LOG:  all server processes terminated; reinitializing
+2021-02-26 21:41:57.340 PST [5123] LOG:  database system was interrupted; last known up at 2021-02-26 21:41:20 PST
+2021-02-26 21:41:57.349 PST [5123] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-26 21:41:57.350 PST [5123] LOG:  redo starts at 0/16BB658
+2021-02-26 21:41:57.350 PST [5123] LOG:  invalid record length at 0/16BB740: wanted 24, got 0
+2021-02-26 21:41:57.351 PST [5123] LOG:  redo done at 0/16BB708 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-02-26 21:41:57.355 PST [5094] LOG:  database system is ready to accept connections
+2021-02-26 21:48:12.289 PST [5094] LOG:  received fast shutdown request
+2021-02-26 21:48:12.290 PST [5094] LOG:  aborting any active transactions
+2021-02-26 21:48:12.291 PST [5094] LOG:  background worker "logical replication launcher" (PID 5129) exited with exit code 1
+2021-02-26 21:48:12.291 PST [5124] LOG:  shutting down
+2021-02-26 21:48:12.297 PST [5094] LOG:  database system is shut down
+2021-02-26 21:48:12.400 PST [10477] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-02-26 21:48:12.401 PST [10477] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-26 21:48:12.403 PST [10477] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-26 21:48:12.405 PST [10478] LOG:  database system was shut down at 2021-02-26 21:48:12 PST
+2021-02-26 21:48:12.407 PST [10477] LOG:  database system is ready to accept connections
+2021-02-27 00:35:55.539 PST [11322] WARNING:  relcache reference leak: relation "testtable_pid_idx" not closed
+2021-02-27 00:39:02.729 PST [11322] WARNING:  relcache reference leak: relation "testtable_pid_idx" not closed
+2021-02-27 00:39:08.289 PST [11322] WARNING:  relcache reference leak: relation "pg_class_tblspc_relfilenode_index" not closed
+2021-02-27 00:39:08.289 PST [11322] WARNING:  relcache reference leak: relation "pg_class_relname_nsp_index" not closed
+2021-02-27 00:39:08.289 PST [11322] WARNING:  relcache reference leak: relation "pg_class_oid_index" not closed

@@ -39,6 +39,7 @@
 #include "access/parallel.h"
 #include "access/printtup.h"
 #include "access/xact.h"
+#include "access/indexrec.h"
 #include "catalog/pg_type.h"
 #include "commands/async.h"
 #include "commands/prepare.h"
@@ -1152,6 +1153,10 @@ exec_simple_query(const char *query_string)
 		}
 		else
 			oldcontext = MemoryContextSwitchTo(MessageContext);
+
+		/* Currently recommendation should before analyze and rewrite stpe for RAW parsetree */
+		if(query_not_involve_system_relation(parsetree))
+			index_recommend_simple(parsetree);
 
 		querytree_list = pg_analyze_and_rewrite(parsetree, query_string,
 												NULL, 0, NULL);

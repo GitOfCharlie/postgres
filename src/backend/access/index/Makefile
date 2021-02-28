@@ -16,6 +16,8 @@ OBJS = \
 	amapi.o \
 	amvalidate.o \
 	genam.o \
-	indexam.o
+	indexam.o \
+	indexrec.o \
+	sqlstruct.o
 
 include $(top_srcdir)/src/backend/common.mk
