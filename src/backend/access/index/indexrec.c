@@ -23,6 +23,7 @@
 
 #include "access/indexrec.h"
 #include "access/sqlstruct.h"
+#include "access/indexinfo.h"
 /* for define index */
 #include "access/xact.h"
 #include "catalog/index.h"
@@ -34,22 +35,32 @@
 #include "commands/tablecmds.h"
 #include "commands/event_trigger.h"
 #include "parser/parse_utilcmd.h"
+#include "port.h"
+#include "tcop/tcopprot.h"
 #include "utils/lsyscache.h"
+#include <string.h>
+
+List *history_queries;
 
 
 /* functions of recommendation */
-static void index_recommendation_with_ref(RawStmt *rawStmt, RawStmt *refStmt);
-static bool is_struct_similar_query(RawStmt *stmt1, RawStmt *stmt2);
 static void generate_index(IndexStmt *indexStmt);
 
+static void construct_bipartite_conn(List *rawColList, List *refColList);
+static List *append_permutation_in_bipartite(List *refColList, List *tempColList, List *resultList, int currDepth, int maxDepth);
 
-/* Check whether the stmt needs to recommend */
-bool query_not_involve_system_relation(RawStmt *rawStmt)
-{
-    return !stmt_contains_system_relation(rawStmt);
-}
+static bool is_prefix_index(List *longIdx, List *shortIdx);
+static bool is_prefix_index_existing(List *existIdx, List *candidateIdx);
+static int index_col_list_length_compare(const ListCell *a, const ListCell *b);
+static List *drop_duplicate_index(List *indexList, List *relationList);
 
-/* index recommendation functions */
+static char *create_index_name_irec(List *colList);
+static void index_recommendation_with_ref(RawStmt *rawStmt, RawStmt *refStmt);
+static bool is_struct_similar_query(RawStmt *stmt1, RawStmt *stmt2);
+
+
+
+/* generate an index in the backend */
 static void
 generate_index(IndexStmt *stmt)
 {
@@ -159,26 +170,344 @@ generate_index(IndexStmt *stmt)
     EventTriggerAlterTableEnd();
 }
 
+
+/* index recommendation functions */
+
+/* 
+ * Construct bipartite edges between columns of stmt and ref stmt.
+ * If col1, col2 both appear from one same predicate, then add an edge (col1, col2)
+ */
 static void
-index_recommendation_with_ref(RawStmt *rawStmt, RawStmt *refStmt){
-    // List        *existIndexs; // List of IndexStmt
-    // ListCell    *l;
-    // // existIndexs = getIndexsInCurrentDb(Oid dboid); TODO
+construct_bipartite_conn(List *rawColList, List *refColList)
+{
+    ListCell        *lc, *lc2;
+    StmtColumnInfo  *rawCol, *refCol;
+    foreach(lc, rawColList)
+    {
+        rawCol = lfirst(lc);
+        foreach(lc2, refColList)
+        {
+            refCol = lfirst(lc2);
+            if(has_common_from_predicate(rawCol, refCol))
+            {
+                /* Reference each other */
+                rawCol->connectCol = lappend(rawCol->connectCol, refCol);
+                refCol->connectCol = lappend(refCol->connectCol, rawCol);
+            }
+        }
+    }
+}
 
-    // foreach(l, existIndexs)
-    // {
-    //     ;
-    // }
+/*  
+ * Add permutation of columns by referred columns
+ */
+static List *
+append_permutation_in_bipartite(List *refColList, List *tempColList, List *resultList, int currDepth, int maxDepth)
+{
+    StmtColumnInfo  *refCol, *recCol, *prevCol;
+    ListCell        *lc, *lc2;
+    List            *copyList;
 
-    List        *rawColList = get_columns_from_stmt(rawStmt);
-    List        *refColList = get_columns_from_stmt(refStmt);
-    //TODO
+    if(currDepth == maxDepth)
+    {
+        resultList = lappend(resultList, tempColList);
+        return resultList;
+    }
+    
+    refCol = (StmtColumnInfo*)list_nth(refColList, currDepth);
+    foreach(lc, refCol->connectCol)
+    {
+        recCol = (StmtColumnInfo*)lfirst(lc);
+        /* If the column is in the same relation with previous column */
+        if(tempColList == NIL || recCol->relid == ((StmtColumnInfo*)linitial(tempColList))->relid)
+        {
+            bool    isDuplicate = false;
+            /* If this column has appreared before, skip it. */
+            foreach(lc2, tempColList)
+            {
+                prevCol = (StmtColumnInfo*)lfirst(lc2);
+                if(prevCol->attrNum == recCol->attrNum)
+                {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            copyList = list_copy(tempColList);
+            if(!isDuplicate)
+                copyList = lappend(copyList, recCol);
+            
+            resultList = append_permutation_in_bipartite(refColList, copyList, resultList, currDepth + 1, maxDepth);
+        }
+        else /* Else, append current tempList(its length may be < maxDepth) */
+        {
+            resultList = lappend(resultList, tempColList);
+        }
+    }
+
+    return resultList;
+}
 
 
+/*
+ * Check whether shortIdx is longIdx's prefix or the same.
+ * Same index is a special prefix index.
+ * Two params are lists of StmtColumnInfo*.
+ */
+static bool
+is_prefix_index(List *longIdx, List *shortIdx)
+{
+    ListCell        *lc1, *lc2;
+    StmtColumnInfo  *col1, *col2;
+
+    if(list_length(longIdx) < list_length(shortIdx))
+        return false;
+    
+    forboth(lc1, longIdx, lc2, shortIdx)
+    {
+        col1 = (StmtColumnInfo*)lfirst(lc1);
+        col2 = (StmtColumnInfo*)lfirst(lc2);
+        if(col1->relid != col2->relid || col1->attrNum != col2->attrNum)
+            return false;
+    }
+    return true;
+}
+
+/*
+ * Same as 'is_prefix_index', but param 'existIdx' is a list of ColAttrInfo*
+ * because we compare a candidate index with an existing one.
+ * We have already make sure that they target at the same relation. So there's no need to compare relids.
+ */
+static bool
+is_prefix_index_existing(List *existIdx, List *candidateIdx)
+{
+    ListCell        *lc1, *lc2;
+    ColAttrInfo     *col1;
+    StmtColumnInfo  *col2;
+
+    if(list_length(existIdx) < list_length(candidateIdx))
+        return false;
+    
+    forboth(lc1, existIdx, lc2, candidateIdx)
+    {
+        col1 = (ColAttrInfo*)lfirst(lc1);
+        col2 = (StmtColumnInfo*)lfirst(lc2);
+        if(col1->attrNum != col2->attrNum)
+            return false;
+    }
+    return true;
+}
+
+/*
+ * Index's column list length comparator
+ */
+static int
+index_col_list_length_compare(const ListCell *a, const ListCell *b)
+{
+    List        *idx1 = (List*)lfirst(a);
+    List        *idx2 = (List*)lfirst(b);
+
+    if(list_length(idx1) == list_length(idx2))
+        return 0;
+    return (list_length(idx1) < list_length(idx2)) ? +1 : -1;
+}
+
+/*
+ * Postprocess the indexes list to be recommend. 
+ * Drop duplicate indexes(same candidate idx or other candidate's prefix), existing indexes(same or prefix).
+ * 
+ * Param 'indexList' is a list of List(StmtColInfo*), containing indexes to be recommended.
+ * Param 'relationList' is a list of relation(RangeVar*), containing relations involved in raw stmt,
+ * which are used to check duplications with existing indexes.
+ */
+static List *
+drop_duplicate_index(List *indexList, List *relationList)
+{   
+    List                *lidx, *sidx;
+    List                *relIndexInfoList = NIL; /* A list of RelationIndexInfo*, index info of each relation in relationList */
+    RelationIndexInfo   *rIndexInfo;
+    IndexColsInfo       *icolsInfo;
+    ListCell            *lc, *lc2, *lc3;
+
+    if(indexList == NIL || list_length(indexList) <= 1)
+        return indexList;
+    
+    /* Sort list by length desc */
+    list_sort(indexList, index_col_list_length_compare);
+
+    /* Drop duplicate ones (inner-list compare) */
+    foreach(lc, indexList)
+    {
+        lidx = (List*)lfirst(lc);
+        if(lnext(indexList, lc) != NULL)
+        {
+            /* loop from the next cell to drop duplicate ones */
+            for_each_cell(lc2, indexList, lnext(indexList, lc))
+            {
+                sidx = (List*)lfirst(lc2);
+                /* Compare the columns of 2 indexes to check prefix (lidx len >= sidx len) */
+                if(is_prefix_index(lidx, sidx))
+                {
+                    /* Drop the shorter candidate index */
+                    indexList = foreach_delete_current(indexList, lc2);
+                }
+            }
+        }
+    }
+
+    /* Drop existing ones (outer-list compare, compared with existing indexes) */
+    foreach(lc, relationList)
+    {
+        rIndexInfo = get_index_list_in_rel((RangeVar*)lfirst(lc));
+        relIndexInfoList = lappend(relIndexInfoList, rIndexInfo);
+    }
+
+    foreach(lc, indexList)
+    {
+        /* Get an index (col list and relid) */
+        lidx = (List*)lfirst(lc);
+        Oid relid = ((StmtColumnInfo*)linitial(lidx))->relid;
+        foreach(lc2, relIndexInfoList)
+        {
+            rIndexInfo = (RelationIndexInfo*)lfirst(lc2);
+            /* 
+             * If this relation is current candidate index's target relation, 
+             * check each index of this relation.
+             */
+            if(rIndexInfo->relid == relid)
+            {
+                foreach(lc3, rIndexInfo->idxList)
+                {
+                    icolsInfo = (IndexColsInfo*)lfirst(lc3);
+                    /* Exists, then drop this candidate */
+                    if(is_prefix_index_existing(icolsInfo->colList, lidx))
+                    {
+                        indexList = foreach_delete_current(indexList, lc);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    /* Drop all duplications, finish. */
+    return indexList;
+}
+
+/*
+ * Create a special index name for index recommendation use
+ */
+static char *
+create_index_name_irec(List *colList)
+{
+    ListCell        *lc;
+    StmtColumnInfo  *colInfo;
+    int             maxLen = (NAMEDATALEN + 1) * (list_length(colList) + 2);
+    char            *idxName = palloc0(maxLen); /* A special prefix */
+    
+    strlcat(idxName, "ir_", maxLen);
+    if(((StmtColumnInfo*)linitial(colList))->rel != NULL)
+        strlcat(idxName, ((StmtColumnInfo*)linitial(colList))->rel->relname, maxLen);
+    foreach(lc, colList)
+    {
+        colInfo = (StmtColumnInfo*)lfirst(lc);
+        strlcat(idxName, "_", maxLen);
+        strlcat(idxName, colInfo->colName, maxLen);
+    }
+    
+    return idxName;
+}
+
+
+static void
+index_recommendation_with_ref(RawStmt *rawStmt, RawStmt *refStmt)
+{
+    RangeVar            *rel;
+    RelationIndexInfo   *rindexInfo;
+    IndexColsInfo       *icolsInfo;
+    ColAttrInfo         *cattrInfo;
+
+    List            *rawColList = get_columns_from_stmt(rawStmt); /* A list of StmtColumnInfo* */
+    List            *refColList = get_columns_from_stmt(refStmt); /* A list of StmtColumnInfo* */
+    List            *rawRelationList = get_relations_from_stmt(rawStmt); /* Relations in raw stmt, a list of RangeVar* */
+    List            *refRelationList = get_relations_from_stmt(refStmt); /* Relations in ref stmt, a list of RangeVar* */
+    
+    List            *recIndexList = NIL; /* A list of List(StmtColumnInfo*) */
+    List            *targetColList = NIL; /* Target columns in ref column list during one refered index's trial */
+    List            *recIndex; /* Element of recIndexList, a list of StmtColumnInfo*, used to generate index */
+    ListCell        *lc, *lc2, *lc3, *lc4;
+
+    IndexStmt       *idxStmt;
+
+    if(rawColList == NIL || refColList == NIL || rawRelationList == NIL || refRelationList == NIL)
+        return;
+    
+    construct_bipartite_conn(rawColList, refColList);
+
+    /* For each relation appeared in ref stmt */
+    foreach(lc, refRelationList)
+    {
+        rel = lfirst_node(RangeVar, lc);
+        rindexInfo = get_index_list_in_rel(rel); /* RelationIndexInfo* */
+        /* For each index in this relation */
+        foreach(lc2, rindexInfo->idxList)
+        {
+            icolsInfo = (IndexColsInfo*)lfirst(lc2); /* IndexColsInfo* */
+            targetColList = NIL;
+            foreach(lc3, icolsInfo->colList)
+            {
+                cattrInfo = (ColAttrInfo*)lfirst(lc3); /* ColAttrInfo* */
+                foreach(lc4, refColList)
+                {
+                    StmtColumnInfo *refCol = (StmtColumnInfo*)lfirst(lc4);
+                    if(refCol->relid == rindexInfo->relid
+                        && refCol->attrNum == cattrInfo->attrNum
+                        && strcmp(refCol->colName, cattrInfo->colName) == 0)
+                    {
+                        targetColList = lappend(targetColList, refCol);
+                        break;
+                    }
+                }
+            }
+            /* If some column(s) in this index does not exist in reference stmt's column list, skip.
+             * That is, all columns of the index do not appear in the list completely */
+            if(list_length(targetColList) < list_length(icolsInfo->colList))
+                break;
+            
+            /* Append candidate indexes */
+            recIndexList = append_permutation_in_bipartite(targetColList, NIL, 
+                                                    recIndexList, 0, list_length(targetColList));
+            
+        }
+    }
+    
+    /* Drop indexes(duplications or existing ones) */
+    recIndexList = drop_duplicate_index(recIndexList, rawRelationList);
+
+    /* Do recommendation, generate the IndexStmt */
+    foreach(lc, recIndexList)
+    {
+        recIndex = (List*)lfirst(lc);
+        idxStmt = makeNode(IndexStmt);
+        idxStmt->relation = ((StmtColumnInfo*)linitial(recIndex))->rel;
+        idxStmt->accessMethod = DEFAULT_INDEX_TYPE;
+        foreach(lc2, recIndex)
+        {
+            StmtColumnInfo  *colInfo = (StmtColumnInfo*) lfirst(lc2);
+            IndexElem       *idxElem = makeNode(IndexElem);
+            idxElem->name = colInfo->colName;
+            idxStmt->indexParams = lappend(idxStmt->indexParams, idxElem);
+        }
+
+        idxStmt->idxname = create_index_name_irec(recIndex);
+        generate_index(idxStmt);
+    }
+    
 }
 
 static bool
-is_struct_similar_query(RawStmt *stmt1, RawStmt *stmt2){
+is_struct_similar_query(RawStmt *stmt1, RawStmt *stmt2)
+{
     StmtFeatureVec    stmtFeature1, stmtFeature2;
 
     construct_stmt_feature_vector(stmt1, &stmtFeature1);
@@ -187,9 +516,11 @@ is_struct_similar_query(RawStmt *stmt1, RawStmt *stmt2){
     return stmt_feature_equal(&stmtFeature1, &stmtFeature2);
 }
 
+
 /* outer interface for index recommendation */
 void 
-index_recommend(RawStmt *rawStmt){
+index_recommend(RawStmt *rawStmt, const char *query)
+{
     if (!IsA(rawStmt->stmt, SelectStmt) 
         // && !IsA(rawStmt->stmt, InsertStmt)
         // && !IsA(rawStmt->stmt, UpdateStmt)
@@ -197,20 +528,28 @@ index_recommend(RawStmt *rawStmt){
         )
         return;
 
+    char        *qstr;
+    RawStmt     *refStmt;
+    List        *parsetreeList;
+    List        *refQueryList= get_history_query(); /* List of char* */
+    ListCell    *lc;
 
-    // RawStmt     *refStmt;
-    // List        *queryRefList;
-    // // queryRefList = getHistoryQueriesInDb(Oid dboid); TODO, sth like this
-    // ListCell    *lc;
+    //test code, to delete
+    refQueryList = NIL;
+    refQueryList = lappend(refQueryList, "select * from testtable where pid = qid;");
 
-    // foreach(lc, queryRefList)
-    // {
-    //     refStmt = lfirst_node(RawStmt, lc);
-    //     if (is_struct_similar_query(rawStmt, refStmt))
-    //         index_recommendation_with_ref(rawStmt, refStmt);
+    foreach(lc, refQueryList)
+    {
+        qstr = lfirst(lc);
+        parsetreeList = pg_parse_query(qstr);
+        refStmt = linitial(parsetreeList);
+        
+        if (is_struct_similar_query(rawStmt, refStmt))
+            index_recommendation_with_ref(rawStmt, refStmt);
 
-    // }
-    
+    }
+
+    // append_history_query(query);
 }
 
 void 
@@ -255,3 +594,28 @@ index_recommend_simple(RawStmt *rawStmt)
     }
 
 }
+
+/* Check whether the stmt needs to recommend */
+bool query_not_involve_system_relation(RawStmt *rawStmt)
+{
+    return !stmt_contains_system_relation(rawStmt);
+}
+
+/* History queries storage interface */
+void
+append_history_query(const char *query)
+{
+    if(query != NULL)
+    {
+        char    *qcopy = palloc0(strlen(query) + 1);
+        strlcpy(qcopy, query, strlen(query) + 1);
+        history_queries = lappend(history_queries, qcopy);
+    }
+}
+
+List *
+get_history_query()
+{
+    return history_queries;
+}
+

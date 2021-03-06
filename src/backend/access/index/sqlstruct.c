@@ -61,19 +61,6 @@ stmt_contains_system_relation(RawStmt *rawStmt)
         {
             RangeVar    *relVar = lfirst_node(RangeVar, lc);
             Relation    relation = table_openrv(relVar, AccessShareLock);
-            
-            // // test code
-            // List        *idxOidList = RelationGetIndexList(relation);
-            // ListCell    *lc2;
-            // foreach(lc2, idxOidList)
-            // {
-            //     Oid idxid = lfirst_oid(lc2);
-            //     Relation idxRelation = index_open(idxid, ShareUpdateExclusiveLock);
-            //     List *idxList = RelationGetIndexExpressions(idxRelation);
-            //     Bitmapset *idxAttr = RelationGetIndexAttrBitmap(idxRelation, INDEX_ATTR_BITMAP_ALL);
-            // }
-            // //test code
-
 
             if(IsSystemRelation(relation))
             {
@@ -630,13 +617,15 @@ get_columns_from_stmt(RawStmt *rawStmt)
                 {
                     RangeVar    *rel = lfirst_node(RangeVar, lc2);
                     Oid         relid = RangeVarGetRelidExtended(rel, ShareLock,
-                                                                0,
+                                                                RVR_MISSING_OK,
                                                                 RangeVarCallbackOwnsRelation,
                                                                 NULL);
-                    if(relid != InvalidOid 
-                        && get_attnum(relid, stmtColumnInfo->colName) != InvalidAttrNumber)
+                    AttrNumber  attrNum = get_attnum(relid, stmtColumnInfo->colName);
+                    if(relid != InvalidOid && attrNum != InvalidAttrNumber)
                     {
                         stmtColumnInfo->rel = rel;
+                        stmtColumnInfo->relid = relid;
+                        stmtColumnInfo->attrNum = attrNum;
                         break;
                     }
                 }
@@ -653,16 +642,18 @@ get_columns_from_stmt(RawStmt *rawStmt)
                 {
                     RangeVar    *rel = lfirst_node(RangeVar, lc2);
                     Oid         relid = RangeVarGetRelidExtended(rel, ShareLock,
-                                                                0,
+                                                                RVR_MISSING_OK,
                                                                 RangeVarCallbackOwnsRelation,
                                                                 NULL);
+                    AttrNumber  attrNum = get_attnum(relid, stmtColumnInfo->colName);
                     /* if 1st field equals relation's alias or name, and the column exists */
                     if((strcmp(relAlias, rel->relname) == 0 
                         || (rel->alias != NULL && strcmp(relAlias, rel->alias->aliasname) == 0))
-                        && relid != InvalidOid
-                        && get_attnum(relid, stmtColumnInfo->colName) != InvalidAttrNumber)
+                        && relid != InvalidOid && attrNum != InvalidAttrNumber)
                     {
                         stmtColumnInfo->rel = rel;
+                        stmtColumnInfo->relid = relid;
+                        stmtColumnInfo->attrNum = attrNum;
                         break;
                     }
                 }
@@ -675,7 +666,6 @@ get_columns_from_stmt(RawStmt *rawStmt)
 
         if(stmtColumnInfo->rel == NULL)
         {
-            // colList = list_delete_ptr(colList, stmtColumnInfo);
             colList = foreach_delete_current(colList, lc);
             // pfree(stmtColumnInfo);
         }
@@ -752,4 +742,19 @@ group_columns_by_relation(List *allColList)
     }
 
     return colListByRelation;
+}
+
+/* 
+ * Get all relations' info involved in a stmt (a list of RangeVar) 
+ */
+List*
+get_relations_from_stmt(RawStmt *rawStmt)
+{
+    if(IsA(rawStmt->stmt, SelectStmt))
+    {
+        SelectStmt  *stmt = rawStmt->stmt;
+        return get_relations_from_FROM_clause(stmt->fromClause);
+    }
+
+    return NIL;
 }

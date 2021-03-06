@@ -27,6 +27,13 @@
         "lsyscache.h": "c",
         "table.h": "c",
         "tablecmds.h": "c",
-        "rel.h": "c"
+        "rel.h": "c",
+        "fmgr.h": "c",
+        "lockdefs.h": "c",
+        "indexinfo.h": "c",
+        "port.h": "c",
+        "netdb.h": "c",
+        "copy.h": "c",
+        "execnodes.h": "c"
     }
 }

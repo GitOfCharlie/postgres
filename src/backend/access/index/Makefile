@@ -18,6 +18,7 @@ OBJS = \
 	genam.o \
 	indexam.o \
 	indexrec.o \
-	sqlstruct.o
+	sqlstruct.o \
+	indexinfo.o
 
 include $(top_srcdir)/src/backend/common.mk

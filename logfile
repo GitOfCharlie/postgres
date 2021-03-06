@@ -1694,3 +1694,445 @@ postgres: pguser testdb [local] SELECT(_start+0x2a)[0x55e15c8e438a]
 2021-02-27 00:39:08.289 PST [11322] WARNING:  relcache reference leak: relation "pg_class_tblspc_relfilenode_index" not closed
 2021-02-27 00:39:08.289 PST [11322] WARNING:  relcache reference leak: relation "pg_class_relname_nsp_index" not closed
 2021-02-27 00:39:08.289 PST [11322] WARNING:  relcache reference leak: relation "pg_class_oid_index" not closed
+2021-03-04 06:35:54.830 PST [28792] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 06:35:54.831 PST [28792] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 06:35:54.833 PST [28792] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 06:35:54.836 PST [28793] LOG:  database system was shut down at 2021-03-04 06:35:54 PST
+2021-03-04 06:35:54.840 PST [28792] LOG:  database system is ready to accept connections
+2021-03-04 20:46:10.010 PST [34943] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 20:46:10.022 PST [34943] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 20:46:10.024 PST [34943] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 20:46:10.026 PST [34944] LOG:  database system was shut down at 2021-03-04 20:46:09 PST
+2021-03-04 20:46:10.029 PST [34943] LOG:  database system is ready to accept connections
+2021-03-04 20:48:17.516 PST [34943] LOG:  server process (PID 34952) was terminated by signal 11: Segmentation fault
+2021-03-04 20:48:17.516 PST [34943] DETAIL:  Failed process was running: select * from testtable where pid=qid;
+2021-03-04 20:48:17.516 PST [34943] LOG:  terminating any other active server processes
+2021-03-04 20:48:17.517 PST [34999] FATAL:  the database system is in recovery mode
+2021-03-04 20:48:17.518 PST [34943] LOG:  all server processes terminated; reinitializing
+2021-03-04 20:48:17.525 PST [35000] LOG:  database system was interrupted; last known up at 2021-03-04 20:46:10 PST
+2021-03-04 20:48:17.535 PST [35000] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 20:48:17.537 PST [35000] LOG:  redo starts at 0/16BBE58
+2021-03-04 20:48:17.537 PST [35000] LOG:  invalid record length at 0/16CDA60: wanted 24, got 0
+2021-03-04 20:48:17.538 PST [35000] LOG:  redo done at 0/16CDA28 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 20:48:17.549 PST [34943] LOG:  database system is ready to accept connections
+2021-03-04 21:01:04.076 PST [34943] LOG:  server process (PID 35008) was terminated by signal 11: Segmentation fault
+2021-03-04 21:01:04.076 PST [34943] DETAIL:  Failed process was running: select * from testtable where pid=qid;
+2021-03-04 21:01:04.077 PST [34943] LOG:  terminating any other active server processes
+2021-03-04 21:01:04.078 PST [35077] FATAL:  the database system is in recovery mode
+2021-03-04 21:01:04.078 PST [34943] LOG:  all server processes terminated; reinitializing
+2021-03-04 21:01:04.086 PST [35078] LOG:  database system was interrupted; last known up at 2021-03-04 20:48:17 PST
+2021-03-04 21:01:04.098 PST [35078] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 21:01:04.099 PST [35078] LOG:  redo starts at 0/16CDAD8
+2021-03-04 21:01:04.099 PST [35078] LOG:  invalid record length at 0/16CDB10: wanted 24, got 0
+2021-03-04 21:01:04.100 PST [35078] LOG:  redo done at 0/16CDAD8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 21:01:04.105 PST [34943] LOG:  database system is ready to accept connections
+2021-03-04 21:09:32.389 PST [34943] LOG:  received fast shutdown request
+2021-03-04 21:09:32.390 PST [34943] LOG:  aborting any active transactions
+2021-03-04 21:09:32.391 PST [34943] LOG:  background worker "logical replication launcher" (PID 35084) exited with exit code 1
+2021-03-04 21:09:32.391 PST [35079] LOG:  shutting down
+2021-03-04 21:09:32.397 PST [34943] LOG:  database system is shut down
+2021-03-04 21:09:32.501 PST [44790] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 21:09:32.501 PST [44790] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 21:09:32.503 PST [44790] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 21:09:32.506 PST [44791] LOG:  database system was shut down at 2021-03-04 21:09:32 PST
+2021-03-04 21:09:32.508 PST [44790] LOG:  database system is ready to accept connections
+2021-03-04 21:18:04.850 PST [44790] LOG:  server process (PID 44799) was terminated by signal 11: Segmentation fault
+2021-03-04 21:18:04.850 PST [44790] DETAIL:  Failed process was running: select * from testtable where pid=qid;
+2021-03-04 21:18:04.850 PST [44790] LOG:  terminating any other active server processes
+2021-03-04 21:18:04.851 PST [44880] FATAL:  the database system is in recovery mode
+2021-03-04 21:18:04.852 PST [44790] LOG:  all server processes terminated; reinitializing
+2021-03-04 21:18:04.859 PST [44881] LOG:  database system was interrupted; last known up at 2021-03-04 21:14:32 PST
+2021-03-04 21:18:04.867 PST [44881] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 21:18:04.868 PST [44881] LOG:  redo starts at 0/16CDC70
+2021-03-04 21:18:04.869 PST [44881] LOG:  invalid record length at 0/16CDD58: wanted 24, got 0
+2021-03-04 21:18:04.869 PST [44881] LOG:  redo done at 0/16CDD20 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 21:18:04.874 PST [44790] LOG:  database system is ready to accept connections
+2021-03-04 21:22:07.632 PST [44790] LOG:  received fast shutdown request
+2021-03-04 21:22:07.633 PST [44790] LOG:  aborting any active transactions
+2021-03-04 21:22:07.634 PST [44790] LOG:  background worker "logical replication launcher" (PID 44887) exited with exit code 1
+2021-03-04 21:22:07.634 PST [44882] LOG:  shutting down
+2021-03-04 21:22:07.640 PST [44790] LOG:  database system is shut down
+2021-03-04 21:22:07.745 PST [50208] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 21:22:07.745 PST [50208] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 21:22:07.747 PST [50208] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 21:22:07.750 PST [50209] LOG:  database system was shut down at 2021-03-04 21:22:07 PST
+2021-03-04 21:22:07.752 PST [50208] LOG:  database system is ready to accept connections
+2021-03-04 21:29:07.830 PST [50208] LOG:  server process (PID 50217) was terminated by signal 11: Segmentation fault
+2021-03-04 21:29:07.830 PST [50208] DETAIL:  Failed process was running: select * from testtable where pid=qid;
+2021-03-04 21:29:07.831 PST [50208] LOG:  terminating any other active server processes
+2021-03-04 21:29:07.832 PST [50270] FATAL:  the database system is in recovery mode
+2021-03-04 21:29:07.832 PST [50208] LOG:  all server processes terminated; reinitializing
+2021-03-04 21:29:07.840 PST [50271] LOG:  database system was interrupted; last known up at 2021-03-04 21:27:07 PST
+2021-03-04 21:29:07.846 PST [50271] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 21:29:07.849 PST [50271] LOG:  redo starts at 0/16CDEB8
+2021-03-04 21:29:07.849 PST [50271] LOG:  invalid record length at 0/16CDFA0: wanted 24, got 0
+2021-03-04 21:29:07.849 PST [50271] LOG:  redo done at 0/16CDF68 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 21:29:07.855 PST [50208] LOG:  database system is ready to accept connections
+2021-03-04 21:31:39.495 PST [50208] LOG:  received fast shutdown request
+2021-03-04 21:31:39.496 PST [50208] LOG:  aborting any active transactions
+2021-03-04 21:31:39.497 PST [50208] LOG:  background worker "logical replication launcher" (PID 50277) exited with exit code 1
+2021-03-04 21:31:39.497 PST [50272] LOG:  shutting down
+2021-03-04 21:31:39.503 PST [50208] LOG:  database system is shut down
+2021-03-04 21:31:39.608 PST [55598] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 21:31:39.609 PST [55598] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 21:31:39.610 PST [55598] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 21:31:39.613 PST [55599] LOG:  database system was shut down at 2021-03-04 21:31:39 PST
+2021-03-04 21:31:39.614 PST [55598] LOG:  database system is ready to accept connections
+2021-03-04 21:33:55.481 PST [55598] LOG:  server process (PID 55607) was terminated by signal 11: Segmentation fault
+2021-03-04 21:33:55.481 PST [55598] DETAIL:  Failed process was running: select * from testtable where pid=qid;
+2021-03-04 21:33:55.481 PST [55598] LOG:  terminating any other active server processes
+2021-03-04 21:33:55.482 PST [55616] FATAL:  the database system is in recovery mode
+2021-03-04 21:33:55.483 PST [55598] LOG:  all server processes terminated; reinitializing
+2021-03-04 21:33:55.491 PST [55617] LOG:  database system was interrupted; last known up at 2021-03-04 21:31:39 PST
+2021-03-04 21:33:55.499 PST [55617] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 21:33:55.500 PST [55617] LOG:  redo starts at 0/16CE0E0
+2021-03-04 21:33:55.500 PST [55617] LOG:  invalid record length at 0/16CE118: wanted 24, got 0
+2021-03-04 21:33:55.500 PST [55617] LOG:  redo done at 0/16CE0E0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 21:33:55.505 PST [55598] LOG:  database system is ready to accept connections
+2021-03-04 21:37:05.609 PST [55598] LOG:  received fast shutdown request
+2021-03-04 21:37:05.610 PST [55598] LOG:  aborting any active transactions
+2021-03-04 21:37:05.612 PST [55598] LOG:  background worker "logical replication launcher" (PID 55623) exited with exit code 1
+2021-03-04 21:37:05.612 PST [55618] LOG:  shutting down
+2021-03-04 21:37:05.618 PST [55598] LOG:  database system is shut down
+2021-03-04 21:37:05.722 PST [60957] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 21:37:05.722 PST [60957] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 21:37:05.724 PST [60957] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 21:37:05.727 PST [60958] LOG:  database system was shut down at 2021-03-04 21:37:05 PST
+2021-03-04 21:37:05.729 PST [60957] LOG:  database system is ready to accept connections
+2021-03-04 21:38:29.659 PST [60957] LOG:  server process (PID 60966) was terminated by signal 11: Segmentation fault
+2021-03-04 21:38:29.659 PST [60957] DETAIL:  Failed process was running: select * from testtable where pid=qid;
+2021-03-04 21:38:29.660 PST [60957] LOG:  terminating any other active server processes
+2021-03-04 21:38:29.661 PST [60993] FATAL:  the database system is in recovery mode
+2021-03-04 21:38:29.661 PST [60957] LOG:  all server processes terminated; reinitializing
+2021-03-04 21:38:29.668 PST [60994] LOG:  database system was interrupted; last known up at 2021-03-04 21:37:05 PST
+2021-03-04 21:38:29.675 PST [60994] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 21:38:29.677 PST [60994] LOG:  redo starts at 0/16CE240
+2021-03-04 21:38:29.677 PST [60994] LOG:  invalid record length at 0/16CE278: wanted 24, got 0
+2021-03-04 21:38:29.677 PST [60994] LOG:  redo done at 0/16CE240 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 21:38:29.683 PST [60957] LOG:  database system is ready to accept connections
+2021-03-04 21:42:27.202 PST [60957] LOG:  received fast shutdown request
+2021-03-04 21:42:27.203 PST [60957] LOG:  aborting any active transactions
+2021-03-04 21:42:27.204 PST [60957] LOG:  background worker "logical replication launcher" (PID 61000) exited with exit code 1
+2021-03-04 21:42:27.204 PST [60995] LOG:  shutting down
+2021-03-04 21:42:27.210 PST [60957] LOG:  database system is shut down
+2021-03-04 21:42:27.313 PST [66311] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 21:42:27.314 PST [66311] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 21:42:27.316 PST [66311] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 21:42:27.318 PST [66312] LOG:  database system was shut down at 2021-03-04 21:42:27 PST
+2021-03-04 21:42:27.321 PST [66311] LOG:  database system is ready to accept connections
+2021-03-04 21:44:02.015 PST [66311] LOG:  server process (PID 66320) was terminated by signal 11: Segmentation fault
+2021-03-04 21:44:02.015 PST [66311] DETAIL:  Failed process was running: select * from testtable where pid=qid;
+2021-03-04 21:44:02.015 PST [66311] LOG:  terminating any other active server processes
+2021-03-04 21:44:02.016 PST [66328] FATAL:  the database system is in recovery mode
+2021-03-04 21:44:02.017 PST [66311] LOG:  all server processes terminated; reinitializing
+2021-03-04 21:44:02.024 PST [66329] LOG:  database system was interrupted; last known up at 2021-03-04 21:42:27 PST
+2021-03-04 21:44:02.033 PST [66329] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 21:44:02.035 PST [66329] LOG:  redo starts at 0/16CE3A0
+2021-03-04 21:44:02.035 PST [66329] LOG:  invalid record length at 0/16CE3D8: wanted 24, got 0
+2021-03-04 21:44:02.036 PST [66329] LOG:  redo done at 0/16CE3A0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 21:44:02.041 PST [66311] LOG:  database system is ready to accept connections
+2021-03-04 21:52:16.904 PST [66311] LOG:  server process (PID 66337) was terminated by signal 11: Segmentation fault
+2021-03-04 21:52:16.904 PST [66311] DETAIL:  Failed process was running: select * from testtable where pid=qid;
+2021-03-04 21:52:16.905 PST [66311] LOG:  terminating any other active server processes
+2021-03-04 21:52:16.906 PST [66394] FATAL:  the database system is in recovery mode
+2021-03-04 21:52:16.906 PST [66311] LOG:  all server processes terminated; reinitializing
+2021-03-04 21:52:16.913 PST [66395] LOG:  database system was interrupted; last known up at 2021-03-04 21:44:02 PST
+2021-03-04 21:52:16.920 PST [66395] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 21:52:16.922 PST [66395] LOG:  redo starts at 0/16CE450
+2021-03-04 21:52:16.922 PST [66395] LOG:  invalid record length at 0/16CE488: wanted 24, got 0
+2021-03-04 21:52:16.923 PST [66395] LOG:  redo done at 0/16CE450 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 21:52:16.927 PST [66311] LOG:  database system is ready to accept connections
+2021-03-04 23:08:14.685 PST [66311] LOG:  received fast shutdown request
+2021-03-04 23:08:14.686 PST [66311] LOG:  aborting any active transactions
+2021-03-04 23:08:14.687 PST [66311] LOG:  background worker "logical replication launcher" (PID 66401) exited with exit code 1
+2021-03-04 23:08:14.687 PST [66396] LOG:  shutting down
+2021-03-04 23:08:14.693 PST [66311] LOG:  database system is shut down
+2021-03-04 23:08:14.797 PST [72251] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 23:08:14.797 PST [72251] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 23:08:14.799 PST [72251] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 23:08:14.801 PST [72252] LOG:  database system was shut down at 2021-03-04 23:08:14 PST
+2021-03-04 23:08:14.803 PST [72251] LOG:  database system is ready to accept connections
+2021-03-04 23:26:03.282 PST [72251] LOG:  received fast shutdown request
+2021-03-04 23:26:03.284 PST [72251] LOG:  aborting any active transactions
+2021-03-04 23:26:03.284 PST [72251] LOG:  background worker "logical replication launcher" (PID 72258) exited with exit code 1
+2021-03-04 23:26:03.284 PST [72253] LOG:  shutting down
+2021-03-04 23:26:03.289 PST [72251] LOG:  database system is shut down
+2021-03-04 23:26:03.394 PST [77757] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 23:26:03.395 PST [77757] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 23:26:03.397 PST [77757] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 23:26:03.400 PST [77758] LOG:  database system was shut down at 2021-03-04 23:26:03 PST
+2021-03-04 23:26:03.402 PST [77757] LOG:  database system is ready to accept connections
+2021-03-04 23:32:12.070 PST [77757] LOG:  server process (PID 77766) was terminated by signal 11: Segmentation fault
+2021-03-04 23:32:12.070 PST [77757] DETAIL:  Failed process was running: select pg_backend_pid();
+2021-03-04 23:32:12.070 PST [77757] LOG:  terminating any other active server processes
+2021-03-04 23:32:12.071 PST [77785] FATAL:  the database system is in recovery mode
+2021-03-04 23:32:12.071 PST [77757] LOG:  all server processes terminated; reinitializing
+2021-03-04 23:32:12.078 PST [77786] LOG:  database system was interrupted; last known up at 2021-03-04 23:31:03 PST
+2021-03-04 23:32:12.090 PST [77786] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 23:32:12.092 PST [77786] LOG:  redo starts at 0/16CE780
+2021-03-04 23:32:12.092 PST [77786] LOG:  invalid record length at 0/16CE868: wanted 24, got 0
+2021-03-04 23:32:12.092 PST [77786] LOG:  redo done at 0/16CE830 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 23:32:12.097 PST [77757] LOG:  database system is ready to accept connections
+2021-03-04 23:39:07.272 PST [77757] LOG:  received fast shutdown request
+2021-03-04 23:39:07.272 PST [77757] LOG:  aborting any active transactions
+2021-03-04 23:39:07.273 PST [77757] LOG:  background worker "logical replication launcher" (PID 77792) exited with exit code 1
+2021-03-04 23:39:07.273 PST [77787] LOG:  shutting down
+2021-03-04 23:39:07.279 PST [77757] LOG:  database system is shut down
+2021-03-04 23:39:07.383 PST [83168] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-04 23:39:07.383 PST [83168] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-04 23:39:07.385 PST [83168] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-04 23:39:07.388 PST [83169] LOG:  database system was shut down at 2021-03-04 23:39:07 PST
+2021-03-04 23:39:07.390 PST [83168] LOG:  database system is ready to accept connections
+1
+2021-03-04 23:41:04.249 PST [83168] LOG:  server process (PID 83177) was terminated by signal 11: Segmentation fault
+2021-03-04 23:41:04.249 PST [83168] DETAIL:  Failed process was running: select pg_backend_pid();
+2021-03-04 23:41:04.250 PST [83168] LOG:  terminating any other active server processes
+2021-03-04 23:41:04.250 PST [83182] FATAL:  the database system is in recovery mode
+2021-03-04 23:41:04.251 PST [83168] LOG:  all server processes terminated; reinitializing
+2021-03-04 23:41:04.258 PST [83183] LOG:  database system was interrupted; last known up at 2021-03-04 23:39:07 PST
+2021-03-04 23:41:04.265 PST [83183] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-04 23:41:04.267 PST [83183] LOG:  redo starts at 0/16CE990
+2021-03-04 23:41:04.267 PST [83183] LOG:  invalid record length at 0/16CE9C8: wanted 24, got 0
+2021-03-04 23:41:04.267 PST [83183] LOG:  redo done at 0/16CE990 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-04 23:41:04.271 PST [83168] LOG:  database system is ready to accept connections
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+2021-03-05 00:00:00.470 PST [83168] LOG:  received fast shutdown request
+2021-03-05 00:00:00.470 PST [83168] LOG:  aborting any active transactions
+1
+2021-03-05 00:00:00.471 PST [83168] LOG:  background worker "logical replication launcher" (PID 83189) exited with exit code 1
+2021-03-05 00:00:00.471 PST [83184] LOG:  shutting down
+2021-03-05 00:00:00.477 PST [83168] LOG:  database system is shut down
+2021-03-05 00:00:00.581 PST [88628] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 00:00:00.582 PST [88628] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 00:00:00.583 PST [88628] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 00:00:00.586 PST [88629] LOG:  database system was shut down at 2021-03-05 00:00:00 PST
+2021-03-05 00:00:00.589 PST [88628] LOG:  database system is ready to accept connections
+   {RAWSTMT 
+   :stmt 
+      {SELECT 
+      :distinctClause <> 
+      :intoClause <> 
+      :targetList (
+         {RESTARGET 
+         :name <> 
+         :indirection <> 
+         :val 
+            {COLUMNREF 
+            :fields (
+               {A_STAR
+               }
+            )
+            :location 7
+            }
+         :location 7
+         }
+      )
+      :fromClause (
+         {RANGEVAR 
+         :schemaname <> 
+         :relname testtable 
+         :inh true 
+         :relpersistence p 
+         :alias <> 
+         :location 14
+         }
+      )
+      :whereClause 
+         {AEXPR  
+         :name ("=")
+         :lexpr 
+            {COLUMNREF 
+            :fields ("pid")
+            :location 30
+            }
+         :rexpr 
+            {COLUMNREF 
+            :fields ("qid")
+            :location 36
+            }
+         :location 34
+         }
+      :groupClause <> 
+      :havingClause <> 
+      :windowClause <> 
+      :valuesLists <> 
+      :sortClause <> 
+      :limitOffset <> 
+      :limitCount <> 
+      :limitOption 0 
+      :lockingClause <> 
+      :withClause <> 
+      :op 0 
+      :all false 
+      :larg <> 
+      :rarg <>
+      }
+   :stmt_location 0 
+   :stmt_len 39
+   }
+
+2021-03-05 00:01:34.844 PST [88628] LOG:  server process (PID 88637) was terminated by signal 11: Segmentation fault
+2021-03-05 00:01:34.844 PST [88628] DETAIL:  Failed process was running: select * from testtable where id = qid;
+2021-03-05 00:01:34.844 PST [88628] LOG:  terminating any other active server processes
+2021-03-05 00:01:34.845 PST [88651] FATAL:  the database system is in recovery mode
+2021-03-05 00:01:34.845 PST [88628] LOG:  all server processes terminated; reinitializing
+2021-03-05 00:01:34.852 PST [88652] LOG:  database system was interrupted; last known up at 2021-03-05 00:00:00 PST
+2021-03-05 00:01:34.859 PST [88652] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-05 00:01:34.861 PST [88652] LOG:  redo starts at 0/16CEAF0
+2021-03-05 00:01:34.861 PST [88652] LOG:  invalid record length at 0/16CEB28: wanted 24, got 0
+2021-03-05 00:01:34.861 PST [88652] LOG:  redo done at 0/16CEAF0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-05 00:01:34.866 PST [88628] LOG:  database system is ready to accept connections
+2021-03-05 00:12:35.103 PST [88628] LOG:  server process (PID 88660) was terminated by signal 11: Segmentation fault
+2021-03-05 00:12:35.103 PST [88628] DETAIL:  Failed process was running: select * from testtable where id = qid;
+2021-03-05 00:12:35.103 PST [88628] LOG:  terminating any other active server processes
+2021-03-05 00:12:35.105 PST [88875] FATAL:  the database system is in recovery mode
+2021-03-05 00:12:35.105 PST [88628] LOG:  all server processes terminated; reinitializing
+2021-03-05 00:12:35.112 PST [88876] LOG:  database system was interrupted; last known up at 2021-03-05 00:01:34 PST
+2021-03-05 00:12:35.118 PST [88876] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-05 00:12:35.120 PST [88876] LOG:  redo starts at 0/16CEBA0
+2021-03-05 00:12:35.120 PST [88876] LOG:  invalid record length at 0/16CEBD8: wanted 24, got 0
+2021-03-05 00:12:35.120 PST [88876] LOG:  redo done at 0/16CEBA0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-05 00:12:35.126 PST [88628] LOG:  database system is ready to accept connections
+2021-03-05 00:19:02.409 PST [88628] LOG:  received fast shutdown request
+2021-03-05 00:19:02.410 PST [88628] LOG:  aborting any active transactions
+2021-03-05 00:19:02.411 PST [88628] LOG:  background worker "logical replication launcher" (PID 88882) exited with exit code 1
+2021-03-05 00:19:02.411 PST [88877] LOG:  shutting down
+2021-03-05 00:19:02.417 PST [88628] LOG:  database system is shut down
+2021-03-05 00:19:02.521 PST [94250] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 00:19:02.523 PST [94250] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 00:19:02.524 PST [94250] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 00:19:02.527 PST [94251] LOG:  database system was shut down at 2021-03-05 00:19:02 PST
+2021-03-05 00:19:02.529 PST [94250] LOG:  database system is ready to accept connections
+2021-03-05 00:37:46.366 PST [94250] LOG:  server process (PID 94259) was terminated by signal 11: Segmentation fault
+2021-03-05 00:37:46.366 PST [94250] DETAIL:  Failed process was running: select * from testtable where id = qid;
+2021-03-05 00:37:46.366 PST [94250] LOG:  terminating any other active server processes
+2021-03-05 00:37:46.367 PST [95111] FATAL:  the database system is in recovery mode
+2021-03-05 00:37:46.367 PST [94250] LOG:  all server processes terminated; reinitializing
+2021-03-05 00:37:46.375 PST [95112] LOG:  database system was interrupted; last known up at 2021-03-05 00:24:02 PST
+2021-03-05 00:37:46.383 PST [95112] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-05 00:37:46.385 PST [95112] LOG:  redo starts at 0/16CED38
+2021-03-05 00:37:46.386 PST [95112] LOG:  invalid record length at 0/16CEE20: wanted 24, got 0
+2021-03-05 00:37:46.386 PST [95112] LOG:  redo done at 0/16CEDE8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-05 00:37:46.391 PST [94250] LOG:  database system is ready to accept connections
+2021-03-05 00:43:35.216 PST [94250] LOG:  server process (PID 95120) was terminated by signal 11: Segmentation fault
+2021-03-05 00:43:35.216 PST [94250] DETAIL:  Failed process was running: select * from testtable where id = qid;
+2021-03-05 00:43:35.216 PST [94250] LOG:  terminating any other active server processes
+2021-03-05 00:43:35.217 PST [95137] FATAL:  the database system is in recovery mode
+2021-03-05 00:43:35.218 PST [94250] LOG:  all server processes terminated; reinitializing
+2021-03-05 00:43:35.225 PST [95138] LOG:  database system was interrupted; last known up at 2021-03-05 00:37:46 PST
+2021-03-05 00:43:35.232 PST [95138] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-05 00:43:35.234 PST [95138] LOG:  redo starts at 0/16CEE98
+2021-03-05 00:43:35.234 PST [95138] LOG:  invalid record length at 0/16CEED0: wanted 24, got 0
+2021-03-05 00:43:35.234 PST [95138] LOG:  redo done at 0/16CEE98 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-05 00:43:35.240 PST [94250] LOG:  database system is ready to accept connections
+2021-03-05 00:48:14.248 PST [94250] LOG:  server process (PID 95146) was terminated by signal 11: Segmentation fault
+2021-03-05 00:48:14.248 PST [94250] DETAIL:  Failed process was running: select * from testtable where id = qid;
+2021-03-05 00:48:14.248 PST [94250] LOG:  terminating any other active server processes
+2021-03-05 00:48:14.249 PST [95192] FATAL:  the database system is in recovery mode
+2021-03-05 00:48:14.250 PST [94250] LOG:  all server processes terminated; reinitializing
+2021-03-05 00:48:14.257 PST [95193] LOG:  database system was interrupted; last known up at 2021-03-05 00:43:35 PST
+2021-03-05 00:48:14.265 PST [95193] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-05 00:48:14.266 PST [95193] LOG:  redo starts at 0/16CEF48
+2021-03-05 00:48:14.266 PST [95193] LOG:  invalid record length at 0/16CEF80: wanted 24, got 0
+2021-03-05 00:48:14.266 PST [95193] LOG:  redo done at 0/16CEF48 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-05 00:48:14.272 PST [94250] LOG:  database system is ready to accept connections
+2021-03-05 00:55:32.971 PST [94250] LOG:  received fast shutdown request
+2021-03-05 00:55:32.972 PST [94250] LOG:  aborting any active transactions
+2021-03-05 00:55:32.972 PST [94250] LOG:  background worker "logical replication launcher" (PID 95199) exited with exit code 1
+2021-03-05 00:55:32.973 PST [95194] LOG:  shutting down
+2021-03-05 00:55:32.978 PST [94250] LOG:  database system is shut down
+2021-03-05 00:55:33.082 PST [100520] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 00:55:33.083 PST [100520] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 00:55:33.084 PST [100520] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 00:55:33.087 PST [100521] LOG:  database system was shut down at 2021-03-05 00:55:32 PST
+2021-03-05 00:55:33.089 PST [100520] LOG:  database system is ready to accept connections
+2021-03-05 02:04:49.973 PST [100520] LOG:  received fast shutdown request
+2021-03-05 02:04:49.974 PST [100520] LOG:  aborting any active transactions
+2021-03-05 02:04:49.974 PST [100520] LOG:  background worker "logical replication launcher" (PID 100527) exited with exit code 1
+2021-03-05 02:04:49.975 PST [100522] LOG:  shutting down
+2021-03-05 02:04:49.980 PST [100520] LOG:  database system is shut down
+2021-03-05 02:04:50.083 PST [106190] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 02:04:50.084 PST [106190] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 02:04:50.086 PST [106190] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 02:04:50.088 PST [106191] LOG:  database system was shut down at 2021-03-05 02:04:49 PST
+2021-03-05 02:04:50.090 PST [106190] LOG:  database system is ready to accept connections
+2021-03-05 02:31:51.737 PST [106190] LOG:  received fast shutdown request
+2021-03-05 02:31:51.738 PST [106190] LOG:  aborting any active transactions
+2021-03-05 02:31:51.739 PST [106190] LOG:  background worker "logical replication launcher" (PID 106197) exited with exit code 1
+2021-03-05 02:31:51.739 PST [106192] LOG:  shutting down
+2021-03-05 02:31:51.744 PST [106190] LOG:  database system is shut down
+2021-03-05 02:31:51.848 PST [111642] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 02:31:51.848 PST [111642] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 02:31:51.850 PST [111642] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 02:31:51.853 PST [111643] LOG:  database system was shut down at 2021-03-05 02:31:51 PST
+2021-03-05 02:31:51.854 PST [111642] LOG:  database system is ready to accept connections
+2021-03-05 02:46:02.899 PST [111642] LOG:  server process (PID 111669) was terminated by signal 11: Segmentation fault
+2021-03-05 02:46:02.899 PST [111642] DETAIL:  Failed process was running: select * from testtable where id = qid;
+2021-03-05 02:46:02.899 PST [111642] LOG:  terminating any other active server processes
+2021-03-05 02:46:02.900 PST [111727] FATAL:  the database system is in recovery mode
+2021-03-05 02:46:02.901 PST [111642] LOG:  all server processes terminated; reinitializing
+2021-03-05 02:46:02.908 PST [111728] LOG:  database system was interrupted; last known up at 2021-03-05 02:41:51 PST
+2021-03-05 02:46:02.915 PST [111728] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-03-05 02:46:02.917 PST [111728] LOG:  redo starts at 0/16F92F8
+2021-03-05 02:46:02.917 PST [111728] LOG:  invalid record length at 0/16F93E0: wanted 24, got 0
+2021-03-05 02:46:02.918 PST [111728] LOG:  redo done at 0/16F93A8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2021-03-05 02:46:02.922 PST [111642] LOG:  database system is ready to accept connections
+2021-03-05 02:57:57.115 PST [111642] LOG:  received fast shutdown request
+2021-03-05 02:57:57.116 PST [111642] LOG:  aborting any active transactions
+2021-03-05 02:57:57.117 PST [111642] LOG:  background worker "logical replication launcher" (PID 111734) exited with exit code 1
+2021-03-05 02:57:57.117 PST [111729] LOG:  shutting down
+2021-03-05 02:57:57.124 PST [111642] LOG:  database system is shut down
+2021-03-05 02:57:57.227 PST [117095] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 02:57:57.227 PST [117095] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 02:57:57.229 PST [117095] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 02:57:57.232 PST [117096] LOG:  database system was shut down at 2021-03-05 02:57:57 PST
+2021-03-05 02:57:57.235 PST [117095] LOG:  database system is ready to accept connections
+2021-03-05 03:11:09.810 PST [117095] LOG:  received fast shutdown request
+2021-03-05 03:11:09.811 PST [117095] LOG:  aborting any active transactions
+2021-03-05 03:11:09.812 PST [117095] LOG:  background worker "logical replication launcher" (PID 117102) exited with exit code 1
+2021-03-05 03:11:09.812 PST [117097] LOG:  shutting down
+2021-03-05 03:11:09.816 PST [117095] LOG:  database system is shut down
+2021-03-05 03:11:09.921 PST [122523] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 03:11:09.923 PST [122523] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 03:11:09.925 PST [122523] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 03:11:09.927 PST [122524] LOG:  database system was shut down at 2021-03-05 03:11:09 PST
+2021-03-05 03:11:09.930 PST [122523] LOG:  database system is ready to accept connections
+create index on table..........
+2021-03-05 03:44:26.371 PST [122523] LOG:  received fast shutdown request
+2021-03-05 03:44:26.372 PST [122523] LOG:  aborting any active transactions
+2021-03-05 03:44:26.373 PST [122523] LOG:  background worker "logical replication launcher" (PID 122530) exited with exit code 1
+2021-03-05 03:44:26.374 PST [122525] LOG:  shutting down
+2021-03-05 03:44:26.378 PST [122523] LOG:  database system is shut down
+2021-03-05 03:44:26.482 PST [128068] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 03:44:26.482 PST [128068] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 03:44:26.484 PST [128068] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 03:44:26.487 PST [128069] LOG:  database system was shut down at 2021-03-05 03:44:26 PST
+2021-03-05 03:44:26.489 PST [128068] LOG:  database system is ready to accept connections
+2021-03-05 04:06:20.650 PST [128068] LOG:  received fast shutdown request
+2021-03-05 04:06:20.651 PST [128068] LOG:  aborting any active transactions
+2021-03-05 04:06:20.652 PST [128068] LOG:  background worker "logical replication launcher" (PID 128075) exited with exit code 1
+2021-03-05 04:06:20.652 PST [128070] LOG:  shutting down
+2021-03-05 04:06:20.658 PST [128068] LOG:  database system is shut down
+2021-03-05 04:06:20.762 PST [128923] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 04:06:20.763 PST [128923] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 04:06:20.765 PST [128923] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 04:06:20.767 PST [128924] LOG:  database system was shut down at 2021-03-05 04:06:20 PST
+2021-03-05 04:06:20.770 PST [128923] LOG:  database system is ready to accept connections

@@ -54,14 +54,25 @@ typedef struct StmtFeatureVec
 
 }StmtFeatureVec;
 
+/*
+ * Column info in stmt
+ */
 typedef struct StmtColumnInfo
 {
-    // PredicateKind   predKind;
-	// bool			isFromPredicate[PRED_KIND_NUM_INCLUDE_CLAUSE]; /* this column is from which predicate(s)? */
-	bits16			predicateFlag; /* this column is from which predicate(s)? */
-    ColumnRef       *colRef;
     RangeVar        *rel;       /* the relation reference */
+	Oid				relid;
+
+	ColumnRef       *colRef;
     char            *colName;   /* column name */
+	AttrNumber		attrNum;
+
+	bits16			predicateFlag; /* this column is from which predicate(s)? */
+	/* 
+	 * In index recommend algo.'s bipartite,
+	 * connectCol is the column list, the elements of which is connected with this column 
+	 */
+	List			*connectCol;
+	
 }StmtColumnInfo;
 
 static inline void
@@ -85,6 +96,13 @@ combine_predicate(StmtColumnInfo *srcInfo, StmtColumnInfo *destInfo)
 	destInfo->predicateFlag |= srcInfo->predicateFlag;
 }
 
+static inline bool
+has_common_from_predicate(StmtColumnInfo *scInfo1, StmtColumnInfo *scInfo2)
+{
+	Assert(scInfo1 != NULL && scInfo2 != NULL);
+	return (scInfo1->predicateFlag & scInfo2->predicateFlag) != 0;
+}
+
 /* functions of sql struct */
 extern bool stmt_contains_system_relation(RawStmt *rawStmt);
 
@@ -93,5 +111,6 @@ extern bool stmt_feature_equal(StmtFeatureVec *feature1, StmtFeatureVec *feature
 
 extern List *get_columns_from_stmt(RawStmt *rawStmt);
 extern List *group_columns_by_relation(List *allColList);
+extern List *get_relations_from_stmt(RawStmt *rawStmt);
 
 #endif

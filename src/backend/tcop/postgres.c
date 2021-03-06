@@ -1156,7 +1156,11 @@ exec_simple_query(const char *query_string)
 
 		/* Currently recommendation should before analyze and rewrite stpe for RAW parsetree */
 		if(query_not_involve_system_relation(parsetree))
-			index_recommend_simple(parsetree);
+		{
+			// index_recommend_simple(parsetree);
+			index_recommend(parsetree, query_string);
+			// append_history_query(query_string);
+		}
 
 		querytree_list = pg_analyze_and_rewrite(parsetree, query_string,
 												NULL, 0, NULL);

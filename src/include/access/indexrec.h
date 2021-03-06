@@ -16,8 +16,13 @@
 
 #include "nodes/parsenodes.h"
 
-extern bool query_not_involve_system_relation(RawStmt *rawStmt);
-extern void index_recommend(RawStmt *rawStmt);
+extern List *history_queries;
+
+extern void index_recommend(RawStmt *rawStmt, const char *query);
 extern void index_recommend_simple(RawStmt *rawStmt);
+extern bool query_not_involve_system_relation(RawStmt *rawStmt);
+
+extern void append_history_query(const char *query);
+extern List *get_history_query();
 
 #endif
