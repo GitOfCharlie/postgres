@@ -60,11 +60,12 @@ typedef struct StmtFeatureVec
 typedef struct StmtColumnInfo
 {
     RangeVar        *rel;       /* the relation reference */
-	Oid				relid;
+	Oid				relid;		/* the relation's oid */
 
-	ColumnRef       *colRef;
+	ColumnRef       *colRef;	/* the column reference */
     char            *colName;   /* column name */
-	AttrNumber		attrNum;
+	AttrNumber		attrNum;	/* column number */
+	int16			orderNum;	/* this column's order of appearance in the stmt */
 
 	bits16			predicateFlag; /* this column is from which predicate(s)? */
 	/* 

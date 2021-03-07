@@ -24,7 +24,7 @@
 #include "access/indexinfo.h"
 #include "access/table.h"
 #include "catalog/namespace.h"
-#include "catalog/pg_index.h"
+// #include "catalog/pg_index.h"
 #include "commands/tablecmds.h"
 #include "utils/lsyscache.h"
 #include "utils/rel.h"

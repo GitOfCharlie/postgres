@@ -46,6 +46,20 @@ typedef struct ColAttrInfo
     char        *colName;
 } ColAttrInfo;
 
+static inline void
+relationIndexInfo_free(RelationIndexInfo *rIndexInfo)
+{
+    IndexColsInfo   *icolsInfo;
+    ListCell        *lc;
+    foreach(lc, rIndexInfo->idxList)
+    {
+        icolsInfo = (IndexColsInfo*)lfirst(lc);
+        list_free_deep(icolsInfo->colList);
+    }
+    list_free_deep(rIndexInfo->idxList);
+    pfree(rIndexInfo);
+}
+
 
 extern RelationIndexInfo *get_index_list_in_rel(RangeVar *rel);
 

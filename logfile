@@ -2136,3 +2136,121 @@ create index on table..........
 2021-03-05 04:06:20.765 PST [128923] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2021-03-05 04:06:20.767 PST [128924] LOG:  database system was shut down at 2021-03-05 04:06:20 PST
 2021-03-05 04:06:20.770 PST [128923] LOG:  database system is ready to accept connections
+2021-03-05 20:37:32.179 PST [9990] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-05 20:37:32.179 PST [9990] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-05 20:37:32.181 PST [9990] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-05 20:37:32.184 PST [9991] LOG:  database system was shut down at 2021-03-05 20:37:32 PST
+2021-03-05 20:37:32.186 PST [9990] LOG:  database system is ready to accept connections
+2021-03-06 04:54:50.780 PST [17776] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-06 04:54:50.781 PST [17776] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-06 04:54:50.783 PST [17776] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-06 04:54:50.786 PST [17777] LOG:  database system was shut down at 2021-03-06 04:54:50 PST
+2021-03-06 04:54:50.789 PST [17776] LOG:  database system is ready to accept connections
+2021-03-06 04:55:00.276 PST [17785] ERROR:  relation "pg_query" does not exist
+2021-03-06 04:55:00.276 PST [17785] STATEMENT:  select * from pg_query;
+2021-03-06 04:55:08.904 PST [17785] ERROR:  relation "pg_query" does not exist
+2021-03-06 04:55:08.904 PST [17785] STATEMENT:  select * from pg_query;
+2021-03-06 06:08:56.705 PST [17776] LOG:  received fast shutdown request
+2021-03-06 06:08:56.706 PST [17776] LOG:  aborting any active transactions
+2021-03-06 06:08:56.706 PST [17776] LOG:  background worker "logical replication launcher" (PID 17783) exited with exit code 1
+2021-03-06 06:08:56.707 PST [17778] LOG:  shutting down
+2021-03-06 06:08:56.711 PST [17776] LOG:  database system is shut down
+2021-03-06 06:08:56.817 PST [23575] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-06 06:08:56.818 PST [23575] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-06 06:08:56.821 PST [23575] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-06 06:08:56.823 PST [23576] LOG:  database system was shut down at 2021-03-06 06:08:56 PST
+2021-03-06 06:08:56.826 PST [23575] LOG:  database system is ready to accept connections
+2021-03-06 06:09:11.295 PST [23584] ERROR:  relation "pg_query" does not exist
+2021-03-06 06:09:11.295 PST [23584] STATEMENT:  select * from pg_query;
+2021-03-06 19:06:34.985 PST [29895] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-06 19:06:34.986 PST [29895] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-06 19:06:34.988 PST [29895] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-06 19:06:34.991 PST [29896] LOG:  database system was shut down at 2021-03-06 19:06:34 PST
+2021-03-06 19:06:34.994 PST [29895] LOG:  database system is ready to accept connections
+2021-03-06 19:06:44.123 PST [29904] ERROR:  relation "pg_query" does not exist
+2021-03-06 19:06:44.123 PST [29904] STATEMENT:  select * from pg_query;
+2021-03-06 19:06:52.267 PST [29904] ERROR:  relation "pg_query" does not exist
+2021-03-06 19:06:52.267 PST [29904] STATEMENT:  select * from pg_query;
+2021-03-06 19:26:05.734 PST [29895] LOG:  received fast shutdown request
+2021-03-06 19:26:05.735 PST [29895] LOG:  aborting any active transactions
+2021-03-06 19:26:05.736 PST [29895] LOG:  background worker "logical replication launcher" (PID 29902) exited with exit code 1
+2021-03-06 19:26:05.737 PST [29897] LOG:  shutting down
+2021-03-06 19:26:05.742 PST [29895] LOG:  database system is shut down
+2021-03-06 19:26:05.850 PST [35563] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-06 19:26:05.850 PST [35563] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-06 19:26:05.852 PST [35563] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-06 19:26:05.854 PST [35564] LOG:  database system was shut down at 2021-03-06 19:26:05 PST
+2021-03-06 19:26:05.856 PST [35563] LOG:  database system is ready to accept connections
+2021-03-06 19:26:09.424 PST [35572] ERROR:  relation "pg_query" does not exist
+2021-03-06 19:26:09.424 PST [35572] STATEMENT:  select * from pg_query;
+2021-03-06 19:33:04.173 PST [35563] LOG:  received fast shutdown request
+2021-03-06 19:33:04.174 PST [35563] LOG:  aborting any active transactions
+2021-03-06 19:33:04.174 PST [35563] LOG:  background worker "logical replication launcher" (PID 35570) exited with exit code 1
+2021-03-06 19:33:04.175 PST [35565] LOG:  shutting down
+2021-03-06 19:33:04.179 PST [35563] LOG:  database system is shut down
+2021-03-06 19:33:04.284 PST [41097] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-06 19:33:04.285 PST [41097] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-06 19:33:04.287 PST [41097] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-06 19:33:04.290 PST [41098] LOG:  database system was shut down at 2021-03-06 19:33:04 PST
+2021-03-06 19:33:04.292 PST [41097] LOG:  database system is ready to accept connections
+2021-03-06 19:33:08.082 PST [41106] ERROR:  relation "pg_query" does not exist
+2021-03-06 19:33:08.082 PST [41106] STATEMENT:  select * from pg_query;
+2021-03-06 21:34:48.160 PST [42117] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-06 21:34:48.161 PST [42117] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2021-03-06 21:34:48.161 PST [42117] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2021-03-06 21:34:48.161 PST [42117] WARNING:  could not create listen socket for "localhost"
+2021-03-06 21:34:48.161 PST [42117] FATAL:  could not create any TCP/IP sockets
+2021-03-06 21:34:48.162 PST [42117] LOG:  database system is shut down
+2021-03-06 21:35:52.076 PST [42127] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-06 21:35:52.077 PST [42127] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-06 21:35:52.078 PST [42127] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-06 21:35:52.081 PST [42128] LOG:  database system was shut down at 2021-03-06 21:34:36 PST
+2021-03-06 21:35:52.084 PST [42127] LOG:  database system is ready to accept connections
+2021-03-06 21:36:08.679 PST [42136] FATAL:  database "testdb" does not exist
+2021-03-06 21:40:15.671 PST [42138] ERROR:  role "postgres" does not exist
+2021-03-06 21:40:15.671 PST [42138] STATEMENT:  CREATE DATABASE testdb WITH OWNER=postgres ENCODING='UTF-8';
+2021-03-06 21:41:57.137 PST [42193] ERROR:  relation "student_pkey" already exists
+2021-03-06 21:41:57.137 PST [42193] STATEMENT:  CREATE TABLE testtable (
+	  id integer NOT NULL,
+	  pid integer,
+	  qid integer,
+	  CONSTRAINT student_pkey PRIMARY KEY (id)
+	);
+2021-03-06 21:53:55.976 PST [42193] ERROR:  syntax error at or near "select" at character 86
+2021-03-06 21:53:55.976 PST [42193] STATEMENT:  insert into testtable(id, pid, qid)
+	select id from generate_series(1, 101) as i(id),
+	select pid from generate_series(1, 201, 2) as p(pid),
+	select qid from generate_series(1, 301, 3) as q(qid);
+2021-03-06 21:56:14.066 PST [42193] ERROR:  table name "generate_series" specified more than once
+2021-03-06 21:56:14.066 PST [42193] STATEMENT:  insert into testtable(id, pid, qid)
+	select id,pid,qid from generate_series(1, 101),generate_series(1, 201, 2),generate_series(1, 301, 3);
+2021-03-06 21:57:27.229 PST [42193] ERROR:  syntax error at or near "select" at character 69
+2021-03-06 21:57:27.229 PST [42193] STATEMENT:  insert into testtable(id, pid, qid)
+	select generate_series(1, 101),
+	select generate_series(1, 201, 2),
+	select generate_series(1, 301, 3);
+2021-03-06 21:57:53.016 PST [42193] ERROR:  syntax error at or near "select" at character 70
+2021-03-06 21:57:53.016 PST [42193] STATEMENT:  insert into testtable(id, pid, qid) 
+	select generate_series(1, 101),
+	select generate_series(1, 201, 2),
+	select generate_series(1, 301, 3);
+2021-03-06 21:58:14.571 PST [42193] ERROR:  syntax error at or near "select" at character 71
+2021-03-06 21:58:14.571 PST [42193] STATEMENT:  insert into testtable(id, pid, qid) 
+	select generate_series(1, 101), 
+	select generate_series(1, 201, 2), 
+	select generate_series(1, 301, 3);
+2021-03-07 03:11:53.677 PST [48051] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-07 03:11:53.679 PST [48051] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-07 03:11:53.680 PST [48051] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-07 03:11:53.683 PST [48052] LOG:  database system was shut down at 2021-03-07 03:11:53 PST
+2021-03-07 03:11:53.685 PST [48051] LOG:  database system is ready to accept connections
+2021-03-07 03:41:51.746 PST [48051] LOG:  received fast shutdown request
+2021-03-07 03:41:51.747 PST [48051] LOG:  aborting any active transactions
+2021-03-07 03:41:51.748 PST [48051] LOG:  background worker "logical replication launcher" (PID 48058) exited with exit code 1
+2021-03-07 03:41:51.748 PST [48053] LOG:  shutting down
+2021-03-07 03:41:51.753 PST [48051] LOG:  database system is shut down
+2021-03-07 03:41:51.858 PST [53788] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-07 03:41:51.858 PST [53788] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-07 03:41:51.860 PST [53788] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-07 03:41:51.863 PST [53789] LOG:  database system was shut down at 2021-03-07 03:41:51 PST
+2021-03-07 03:41:51.866 PST [53788] LOG:  database system is ready to accept connections

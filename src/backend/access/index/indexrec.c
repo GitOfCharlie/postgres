@@ -299,6 +299,7 @@ is_prefix_index_existing(List *existIdx, List *candidateIdx)
 
 /*
  * Index's column list length comparator
+ * Sort index list by each index's length, DESCEND.
  */
 static int
 index_col_list_length_compare(const ListCell *a, const ListCell *b)
@@ -309,6 +310,21 @@ index_col_list_length_compare(const ListCell *a, const ListCell *b)
     if(list_length(idx1) == list_length(idx2))
         return 0;
     return (list_length(idx1) < list_length(idx2)) ? +1 : -1;
+}
+
+/*
+ * Column's order of apprearance comparator
+ * In one index, sort columns list by each column's order of apprearance in stmt, ASCEND.
+ */
+static int
+column_stmt_apprearence_order_compare(const ListCell *a, const ListCell *b)
+{
+    StmtColumnInfo  *colInfo1 = (StmtColumnInfo*)lfirst(a);
+    StmtColumnInfo  *colInfo2 = (StmtColumnInfo*)lfirst(b);
+
+    if(colInfo1->orderNum == colInfo2->orderNum)
+        return 0;
+    return (colInfo1->orderNum > colInfo2->orderNum) ? +1 : -1;
 }
 
 /*
@@ -333,7 +349,14 @@ drop_duplicate_index(List *indexList, List *relationList)
     
     /* Sort list by length desc */
     list_sort(indexList, index_col_list_length_compare);
-
+    /* Sort each index's columns by order apprearance */
+    foreach(lc, indexList)
+    {
+        lidx = (List*)lfirst(lc);
+        list_sort(lidx, column_stmt_apprearence_order_compare);
+    }
+    
+    
     /* Drop duplicate ones (inner-list compare) */
     foreach(lc, indexList)
     {
@@ -391,6 +414,13 @@ drop_duplicate_index(List *indexList, List *relationList)
     }
 
     /* Drop all duplications, finish. */
+    foreach(lc, relIndexInfoList)
+    {
+        rIndexInfo = (RelationIndexInfo*)lfirst(lc);
+        relationIndexInfo_free(rIndexInfo);
+    }
+    list_free(relIndexInfoList);
+
     return indexList;
 }
 
@@ -472,13 +502,16 @@ index_recommendation_with_ref(RawStmt *rawStmt, RawStmt *refStmt)
             /* If some column(s) in this index does not exist in reference stmt's column list, skip.
              * That is, all columns of the index do not appear in the list completely */
             if(list_length(targetColList) < list_length(icolsInfo->colList))
-                break;
+                continue;
             
             /* Append candidate indexes */
             recIndexList = append_permutation_in_bipartite(targetColList, NIL, 
                                                     recIndexList, 0, list_length(targetColList));
             
+            list_free(targetColList);
         }
+
+        relationIndexInfo_free(rindexInfo);
     }
     
     /* Drop indexes(duplications or existing ones) */
@@ -501,8 +534,21 @@ index_recommendation_with_ref(RawStmt *rawStmt, RawStmt *refStmt)
 
         idxStmt->idxname = create_index_name_irec(recIndex);
         generate_index(idxStmt);
+
+        /* free IndexStmt space */
+        list_free_deep(idxStmt->indexParams);
+        pfree(idxStmt->idxname);
+        pfree(idxStmt);
     }
     
+    /* free mem space */
+    list_free_deep(rawColList);
+    list_free_deep(refColList);
+    list_free(rawRelationList);
+    list_free(refRelationList);
+
+    list_free_deep(recIndexList);
+
 }
 
 static bool
@@ -591,8 +637,15 @@ index_recommend_simple(RawStmt *rawStmt)
         }
 
         generate_index(idxStmt);
+
+        /* free IndexStmt space */
+        list_free_deep(idxStmt->indexParams);
+        pfree(idxStmt);
     }
 
+    /* free mem space */
+    list_free_deep(allColList);
+    list_free_deep(colListByRelation);
 }
 
 /* Check whether the stmt needs to recommend */

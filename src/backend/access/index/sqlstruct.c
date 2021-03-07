@@ -695,6 +695,14 @@ get_columns_from_stmt(RawStmt *rawStmt)
         }
         
     }
+
+    /* In the final result list, set each columnInfo's orderNum to be the subscript of list */
+    foreach(lc, colList)
+    {
+        StmtColumnInfo  *currInfo = (StmtColumnInfo*) lfirst(lc);
+        currInfo->orderNum = list_cell_number(colList, lc);
+    }
+    list_free(fromTables);
     return colList;
 }
 
