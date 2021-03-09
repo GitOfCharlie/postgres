@@ -563,37 +563,14 @@ get_columns_from_stmt(RawStmt *rawStmt)
         // get columns in ORDER BY clause
         if(sortCls != NULL)
         {
-            // foreach(lc, sortCls)
-            // {
-            //     SortBy      *sortBy = lfirst_node(SortBy, lc);
-            //     if(IsA(sortBy->node, ColumnRef))
-            //     {
-            //         StmtColumnInfo *colInfo = palloc0(sizeof(StmtColumnInfo));
-            //         colInfo->colRef = (ColumnRef*)sortBy->node;
-            //         set_from_predicate(colInfo, PRED_ORDERBY);
-            //         colList = lappend(colList, colInfo);
-            //     }
-            // }
             colList = get_columns_from_ORDERBY_clause(sortCls, colList, targetCols);
         }
         // get columns in GROUP BY clause
         if(groupbyCls != NULL)
         {
-            // foreach(lc, groupbyCls)
-            // {
-            //     Node        *node = (Node*)lfirst(lc);
-            //     if(IsA(node, ColumnRef))
-            //     {
-            //         StmtColumnInfo *colInfo = palloc0(sizeof(StmtColumnInfo));
-            //         colInfo->colRef = (ColumnRef*)node;
-            //         set_from_predicate(colInfo, PRED_GROUPBY);
-            //         colList = lappend(colList, colInfo);
-            //     }
-            // }
             colList = get_columns_from_GROUPBY_clause(groupbyCls, colList, targetCols);
         }
 
-        // fromTables = stmt->fromClause;
         fromTables = get_relations_from_FROM_clause(stmt->fromClause);
     }
 

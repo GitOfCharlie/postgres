@@ -2254,3 +2254,8 @@ create index on table..........
 2021-03-07 03:41:51.860 PST [53788] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2021-03-07 03:41:51.863 PST [53789] LOG:  database system was shut down at 2021-03-07 03:41:51 PST
 2021-03-07 03:41:51.866 PST [53788] LOG:  database system is ready to accept connections
+2021-03-08 23:29:21.177 PST [61687] LOG:  starting PostgreSQL 14devel on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2021-03-08 23:29:21.178 PST [61687] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-03-08 23:29:21.180 PST [61687] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-03-08 23:29:21.183 PST [61688] LOG:  database system was shut down at 2021-03-08 23:29:21 PST
+2021-03-08 23:29:21.187 PST [61687] LOG:  database system is ready to accept connections

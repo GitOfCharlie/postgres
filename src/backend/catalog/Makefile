@@ -38,6 +38,7 @@ OBJS = \
 	pg_operator.o \
 	pg_proc.o \
 	pg_publication.o \
+	pg_query.o \
 	pg_range.o \
 	pg_shdepend.o \
 	pg_subscription.o \

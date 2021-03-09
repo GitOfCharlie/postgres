@@ -31,6 +31,7 @@
 #include "catalog/namespace.h"
 #include "catalog/pg_class_d.h"
 #include "catalog/pg_inherits.h"
+#include "catalog/pg_query.h"
 #include "commands/defrem.h"
 #include "commands/tablecmds.h"
 #include "commands/event_trigger.h"
@@ -39,8 +40,6 @@
 #include "tcop/tcopprot.h"
 #include "utils/lsyscache.h"
 #include <string.h>
-
-List *history_queries;
 
 
 /* functions of recommendation */
@@ -580,10 +579,8 @@ index_recommend(RawStmt *rawStmt, const char *query)
     List        *refQueryList= get_history_query(); /* List of char* */
     ListCell    *lc;
 
-    //test code, to delete
-    refQueryList = NIL;
-    refQueryList = lappend(refQueryList, "select * from testtable where pid = qid;");
 
+    /* For each reference query, if it's struct similar with raw query, do recommend */
     foreach(lc, refQueryList)
     {
         qstr = lfirst(lc);
@@ -595,7 +592,10 @@ index_recommend(RawStmt *rawStmt, const char *query)
 
     }
 
-    // append_history_query(query);
+    /* Append history query into sys catalog, qid is current queries number */
+    append_history_query(list_length(refQueryList), query);
+
+    list_free_deep(refQueryList);
 }
 
 void 
@@ -656,19 +656,19 @@ bool query_not_involve_system_relation(RawStmt *rawStmt)
 
 /* History queries storage interface */
 void
-append_history_query(const char *query)
+append_history_query(int32 qid, const char *query)
 {
     if(query != NULL)
     {
-        char    *qcopy = palloc0(strlen(query) + 1);
-        strlcpy(qcopy, query, strlen(query) + 1);
-        history_queries = lappend(history_queries, qcopy);
+        // char    *qcopy = palloc0(strlen(query) + 1);
+        // strlcpy(qcopy, query, strlen(query) + 1);
+        QueryCreate(qid, query);
     }
 }
 
 List *
 get_history_query()
 {
-    return history_queries;
+    return QueriesGet();
 }
 

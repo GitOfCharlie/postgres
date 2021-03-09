@@ -34,6 +34,14 @@
         "port.h": "c",
         "netdb.h": "c",
         "copy.h": "c",
-        "execnodes.h": "c"
+        "execnodes.h": "c",
+        "pg_namespace.h": "c",
+        "htup_details.h": "c",
+        "pg_query.h": "c",
+        "builtins.h": "c",
+        "pg_query_d.h": "c",
+        "genam.h": "c",
+        "objectaccess.h": "c",
+        "pg_class_d.h": "c"
     }
 }

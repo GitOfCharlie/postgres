@@ -48,5 +48,7 @@ typedef FormData_pg_query *Form_pg_query;
 DECLARE_UNIQUE_INDEX(pg_query_qid_index, 4601, on pg_query using btree(qid oid_ops));
 #define QueryQidIndexId  4601
 
+extern void QueryCreate(int32 qid, const char *query);
+extern List *QueriesGet();
 
 #endif
